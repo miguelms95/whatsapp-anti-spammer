@@ -3,7 +3,7 @@ Trolea enviando guiones completos de cine a quienes te pretendan molestar, spamm
 
 ## Instrucciones
 
-1. Entra en el fichero del guión que quieras enviar, por ejemplo [script-ace-ventura.js](script-ace-ventura.js), clic en "raw"
+1. Entra en el fichero del guión que quieras enviar, por ejemplo [script-ace-ventura.js](script-ace-ventura.js), clic en "raw" o "copy raw file".
 2. Pulsa `Ctrl+A` para seleccionar todo el contenido
 3. Pulsa `Ctrl+C` para copiar
 4. Abre https://web.whatsapp.com/
