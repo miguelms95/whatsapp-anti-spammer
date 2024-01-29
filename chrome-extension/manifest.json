@@ -1,0 +1,11 @@
+{
+  "name": "WhatsApp Web Anti Spammer",
+  "version": "1.0.0",
+  "description": "Envía guiones de película a quien te pretenda spammear",
+  "manifest_version": 3,
+  "author": "Miguel Martínez",
+  "action":{
+    "default_popup": "index.html",
+    "default_title": "WhatsApp Web - Anti Spammer"
+  }
+}
