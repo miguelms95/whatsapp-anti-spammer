@@ -1,4 +1,27 @@
-ACE VENTURA
+async function sendScript(scriptText){
+    const lines = scriptText.split(/[\n\t]+/).map(line => line.trim()).filter(line => line);
+    let main = document.querySelector("#main");
+    let textarea = main.querySelector(`div[contenteditable="true"]`);
+
+    if(!textarea) throw new Error("No tienes una conversación de WhatsApp abierta.")
+
+    for(const line of lines){
+        console.log(line)
+
+        textarea.focus();
+        document.execCommand('insertText', false, line);
+        textarea.dispatchEvent(new Event('change', {bubbles: true}));
+
+        setTimeout(() => {
+            (main.querySelector(`[data-testid="send"]`) || main.querySelector(`[data-icon="send"]`)).click();
+        }, 100);
+
+        if(lines.indexOf(line) !== lines.length - 1) await new Promise(resolve => setTimeout(resolve, 250));
+    }
+
+    return lines.length;
+}
+const content = `ACE VENTURA
 PET DETECTIVE
 
 Written by
@@ -10,71 +33,71 @@ EXT. STREET - DAY
 
 A UPS Man with a big pot belly is walking down the street, whistling and carelessly tossing a package in the air. We hear the sound of broken glass in the box. He passes a professional woman.
 
-UPS MAN
+    UPS MAN
 
 Good morning, UPS!
 
-He tosses the box behind his back like a basketball, then acknowledges another passerby.
+    He tosses the box behind his back like a basketball, then acknowledges another passerby.
 
-UPS MAN
+    UPS MAN
 
 UPS, good to see you!
 
-He takes a couple of steps, then flings the package incredibly high into the air, spins completely around and expertly drops to one knee and catches the box. A Hispanic man passes.
+    He takes a couple of steps, then flings the package incredibly high into the air, spins completely around and expertly drops to one knee and catches the box. A Hispanic man passes.
 
-UPS MAN
+    UPS MAN
 
 Buenos dias. Uo Pay eSsay.
 
-EXT. APARTMENT BUILDING - DAY
+    EXT. APARTMENT BUILDING - DAY
 
 The UPS Man dodges a couple of black kids as though playing basketball. He runs up the front steps of the building. He reaches out to open the front door and inadvertently flings the package behind him and back down the steps.
 
-He goes back, retrieves the package, then enters the building.
+    He goes back, retrieves the package, then enters the building.
 
-INT. LOBBY - DAY
+    INT. LOBBY - DAY
 
 Several people stand in the elevator. The UPS Man just makes it, but the door closes on the package... REPEATEDLY. He feigns embarrassment.
 
-INT. 3RD FLOOR - DAY
+    INT. 3RD FLOOR - DAY
 
 ELEVATOR DOORS OPEN. The UPS Man throws the package out onto the floor and starts kicking it down the hall like a soccer player. With one last big kick the parcel lands in front of APARTMENT 3B. He picks it up and knocks on the door.
 
-We hear a small dog barking.
+    We hear a small dog barking.
 
-GRUFF MAN (O.S.)
+    GRUFF MAN (O.S.)
 
 Shut the hell up, you stupid mutt!
 
-An angry, burly man pokes his nose hairs out the chained door.
+    An angry, burly man pokes his nose hairs out the chained door.
 
-GRUFF MAN
+    GRUFF MAN
 
 What do you want?
 
-UPS MAN
+    UPS MAN
 
 UPS, sir. And how are you this afternoon? Alrighty then!
 
-The man grumpily unchains the door. He's a big guy - 6'5", 250, and 50 of that is chest hair. A small Shiatsu stands beside him.
+    The man grumpily unchains the door. He's a big guy - 6'5", 250, and 50 of that is chest hair. A small Shiatsu stands beside him.
 
 UPS MAN
 
 I have a package for you.
 
-The UPS guy thrusts the package toward the man. We can clearly hear broken glass inside. The man takes the package.
+                         The UPS guy thrusts the package toward the man. We can clearly hear broken glass inside. The man takes the package.
 
-GRUFF MAN
+    GRUFF MAN
 
 It sounds broken.
 
-UPS MAN
+    UPS MAN
 
 Most likely sir! I bet it was something nice though! Now... I haver an insurance form. If you'll just sign here, here, and here, and initial here, and print your name here, we'll get the rest of the forms out to you as soon as we can.
 
-The man begrudgingly begins to fill out the form. The dog wags his tail and whines. We can see that he likes the UPS guy.
+    The man begrudgingly begins to fill out the form. The dog wags his tail and whines. We can see that he likes the UPS guy.
 
-UPS MAN
+    UPS MAN
 
 That's a lovely dog you have. Do you mind if I pet him, sir?
 
@@ -84,21 +107,21 @@ GRUFF MAN
 
 I don't give a rat's ass.
 
-The UPS Man bends down and talks to the dog in a really sucky pet talk.
+    The UPS Man bends down and talks to the dog in a really sucky pet talk.
 
-UPS MAN
+    UPS MAN
 
 Oo ja boo ba da boo boo do booo!
 
-GRUFF MAN
+    GRUFF MAN
 
 (under breath)
 
 Brother.
 
-Before the Gruff Man can finish, the UPS Man stands back up and takes the form again.
+    Before the Gruff Man can finish, the UPS Man stands back up and takes the form again.
 
-UPS MAN
+    UPS MAN
 
 That's fine sir. I can fill out the rest. You just have yourself a good day. Take care, now! 'Bye 'bye, then!
 
@@ -108,29 +131,29 @@ INT. HALLWAY -- CONT'D
 
 The UPS Man moves swiftly down the hall and into the stair well.
 
-INT. APARTMENT 3B - CONT'D
+    INT. APARTMENT 3B - CONT'D
 
 The Gruff Man shakes the box, tosses it down and sits in front of the TV.
 
-EXT. APARTMENT BUILDING - CONT'D
+    EXT. APARTMENT BUILDING - CONT'D
 
 The UPS Man bursts from the front door and hustles down the street very quickly. He passes several people.
 
-UPS MAN
+    UPS MAN
 
 (quickly)
 
 UPS, S'cuse me. UPS, comin' through.
 
-INT. APARTMENT 3B - CONT'D
+    INT. APARTMENT 3B - CONT'D
 
 We see the back of the Shiatsu staring at the crack in the front door. He has not moved an inch. The Gruff Man looks over.
 
-GRUFF MAN
+    GRUFF MAN
 
 Hey, stupid! Get away from the door!
 
-The dog doesn't budge and this really pisses him off. He gets up and heads for the dog.
+    The dog doesn't budge and this really pisses him off. He gets up and heads for the dog.
 
 GRUFF MAN
 
@@ -142,9 +165,9 @@ GRUFF MAN
 
 Son of a bitch!
 
-He smashes the dog to the ground.
+    He smashes the dog to the ground.
 
-EXT. ALLEY - CONT'D
+    EXT. ALLEY - CONT'D
 
 As the UPS Man/Ace rounds the corner, his shirt opens up at his pot belly and the Shiatsu's head sticks out. Ace is gloating.
 
@@ -154,13 +177,13 @@ ACE
 
 That was a close one, ladies and gentlemen. Unfortunately, in every contest, there must be... A LOOSER!
 
-He jumps into an old beat-up Chevy Bel Air, and lets the dog out onto the passenger seat.
+    He jumps into an old beat-up Chevy Bel Air, and lets the dog out onto the passenger seat.
 
 ACE (CONT'D)
 
 LOOOHOOOSERRRHERRR!
 
-He then pulls open the car's ashtray, and to the dog's delight, it's filled with puppy chow.
+    He then pulls open the car's ashtray, and to the dog's delight, it's filled with puppy chow.
 
 He tries to start the engine but it won't turn over. The dog shoots him a look.
 
@@ -172,19 +195,19 @@ No problem, it gets flooded. We'll just wait a few seconds.
 
 Ace sits back. SMASH!!!
 
-From Ace's POV we see a Baseball bat shatter the front windshield.
+    From Ace's POV we see a Baseball bat shatter the front windshield.
 
 ACE
 
 Or, we could try it now.
 
-Ace frantically tries to start the car. His new friend continues around the car beating the living shit out of it.
+    Ace frantically tries to start the car. His new friend continues around the car beating the living shit out of it.
 
-ACE
+    ACE
 
 Oooh, boy.
 
-ACE'S POV
+    ACE'S POV
 
 We see the creep wailing on the car in Ace's side view mirror.
 
@@ -192,7 +215,7 @@ ACE
 
 Warning! Assholes are closer than they appear!
 
-The dog is barking insanely.
+    The dog is barking insanely.
 
 ACE
 
@@ -200,9 +223,9 @@ ACE
 
 You think you can do better?!
 
-The baseball bat is now pummeling the trunk.
+    The baseball bat is now pummeling the trunk.
 
-ACE
+    ACE
 
 Wanna give me a push while you're back there?
 
@@ -212,13 +235,13 @@ ACE
 
 FARFEGNUGENNNNN!!!
 
-Ace leaves the bad guy in a cloud of dust and gravel, screaming bloody murder.
+    Ace leaves the bad guy in a cloud of dust and gravel, screaming bloody murder.
 
-EXT. MIAMI CITY STREETS - DAY
+    EXT. MIAMI CITY STREETS - DAY
 
 Ace and his new pal speed away freely.
 
-Close on the happy dog, hanging his head out the car window. PAN across the broken windshield to Ace, also hanging his head out the window to see where he's going.
+    Close on the happy dog, hanging his head out the car window. PAN across the broken windshield to Ace, also hanging his head out the window to see where he's going.
 
 The car drives by a sign on a telephone pole: "Reward" -- with a picture of the Shiatsu in Ace's seat.
 
@@ -228,7 +251,7 @@ INT. HOUSE - DAY
 
 A very sexy woman is hugging and kissing the Shiatsu.
 
-WOMAN
+    WOMAN
 
 My little baby. You missed mommy didn't you? Did daddy hurt you? I won't let him, no I won't. He may have kept the big screen TV, but he's not gonna keep my baby. No he isn't.
 
@@ -236,25 +259,25 @@ My little baby. You missed mommy didn't you? Did daddy hurt you? I won't let him
 
 Thank you, Mr. Ventura. How can I ever repay you?
 
-She slinks over to Ace and puts her arms around his neck.
+    She slinks over to Ace and puts her arms around his neck.
 
-ACE
+    ACE
 
 Well, the reward would be good, and there was some damage to my –
 
 She cuts Ace off with a devastating kiss.
 
-WOMAN
+    WOMAN
 
 Would you like me to take you pants off instead?
 
-ACE
+    ACE
 
-Ummmm… Sure.
+    Ummmm… Sure.
 
-She pulls him toward the bedroom.
+    She pulls him toward the bedroom.
 
-WOMAN
+    WOMAN
 
 It takes a big man to stand up to my husband. He's already put two of my lovers in the hospital.
 
@@ -262,7 +285,7 @@ ACE
 
 How did he find out? Does he have you followed.
 
-WOMAN
+    WOMAN
 
 No… I tell him
 
@@ -276,31 +299,31 @@ Behind one of the goal posts, the team's mascot, a rare dolphin (SNOWFLAKE), wea
 
 TRAINER Blue! 42! Blue! 42! Hut! Hut!
 
-Snowflake swims over, snatches a small football out of the Trainer's hand, and does an end zone dance on his tail. He then returns the ball to the trainer.
+    Snowflake swims over, snatches a small football out of the Trainer's hand, and does an end zone dance on his tail. He then returns the ball to the trainer.
 
 The Trainer now sets the ball on the dolphin's tail and snowflake "kicks" a perfect field goal. The Trainer blows a whistle and raises both arms.
 
 DISSOLVE TO:
 
-EXT. DOLPHIN STADIUM PLAYING FIELD - NIGHT
+    EXT. DOLPHIN STADIUM PLAYING FIELD - NIGHT
 
 The stadium is now completely empty. Snowflake peacefully swims around his tank.
 
-Suddenly, the water is illuminated by the headlights of an n.d. panel truck.
+    Suddenly, the water is illuminated by the headlights of an n.d. panel truck.
 
-The rear door slides open. Two men jump out in wet suits.
+    The rear door slides open. Two men jump out in wet suits.
 
-They slip into the water while a third waits outside the tank.
+    They slip into the water while a third waits outside the tank.
 
-Snowflake surfaces to check out the action. One of the men holds out a fish. Snowflake eagerly takes it, then shudders as a large syringe is stuck into his back. Snowflake thrashes around.
+    Snowflake surfaces to check out the action. One of the men holds out a fish. Snowflake eagerly takes it, then shudders as a large syringe is stuck into his back. Snowflake thrashes around.
 
-Quick cut of a hand with the blur of a ring slamming against the tank. But the needle has done its job. Snowflake quickly goes limp.
+    Quick cut of a hand with the blur of a ring slamming against the tank. But the needle has done its job. Snowflake quickly goes limp.
 
-Snowflake is loaded into the back of the truck. Move in on Snowflake's face. His excited cackle has turned into a painful whimper.
+    Snowflake is loaded into the back of the truck. Move in on Snowflake's face. His excited cackle has turned into a painful whimper.
 
 The truck skids away passing the guard gate. The guard is hog tied and gagged, struggling to free himself.
 
-INT. ADELLE'S FRIENDLY PET SHOP - NEXT DAY
+    INT. ADELLE'S FRIENDLY PET SHOP - NEXT DAY
 
 Close up on a dead goldfish laying on a newspaper. We pull back to reveal ADELLE ROSENBERG, the seventy year old owner of a cluttered pet shop. She's handing a live goldfish in a bag to JENNIFER, a very sweet nine year old.
 
@@ -316,25 +339,25 @@ ADELLE
 
 Don't worry, I'll make sure she gets a proper burial.
 
-Jennifer exits. Adelle calls to her cat, and tosses it the goldfish. The cat catches it in mid-air.
+    Jennifer exits. Adelle calls to her cat, and tosses it the goldfish. The cat catches it in mid-air.
 
-ADELLE
+    ADELLE
 
 Rest in peace.
 
-Ace enters the pet shop. It looks like he slept in his clothes.
+    Ace enters the pet shop. It looks like he slept in his clothes.
 
-ADELLE
+    ADELLE
 
 Well… here comes another dead fish.
 
-ACE
+    ACE
 
 Hi, beautiful. What time do you get off?
 
-ADELLE
+    ADELLE
 
-Uh oh.
+    Uh oh.
 
 ACE
 
@@ -352,53 +375,53 @@ ACE
 
 Just get me the food!
 
-She chuckles at Ace as she loads a couple of bags with different kinds of pet food.
+    She chuckles at Ace as she loads a couple of bags with different kinds of pet food.
 
-ADELLE
+    ADELLE
 
 So… ahh, when can I expect you to pay your tab?
 
-ACE
+    ACE
 
-I'm a little bit Sli Pickins, right now, I'm a little Tight Squeeze Louise, a little Welfare Wolly, Potless Pissing Pete, I'm ah –
+    I'm a little bit Sli Pickins, right now, I'm a little Tight Squeeze Louise, a little Welfare Wolly, Potless Pissing Pete, I'm ah –
 
 ADELLE
 
 If you were a horse I'd shoot ya'. Just take it.
 
-ACE
+    ACE
 
 Gravy! I'm good for it, Adelle. I'm on a very big case right now.
 
-Ace reaches into his coat pocket and pulls out a flyer with a picture of a white pigeon.
+    Ace reaches into his coat pocket and pulls out a flyer with a picture of a white pigeon.
 
-ACE
+    ACE
 
 See this pigeon? It's a true albino. Some rich guy lost it. He's offering a ten thousand dollar reward.
 
-ADELLE
+    ADELLE
 
 Wow, albino pigeons are very rare. How are you going to find him?
 
-ACE
+    ACE
 
-Just keep my eyes open, and hope to god it doesn't snow.
+    Just keep my eyes open, and hope to god it doesn't snow.
 
 Ace grabs his bags and heads for the door.
 
-ADELLE
+    ADELLE
 
 You're a good boy, Ace. A good boy.
 
 He holds the door open for an elderly gentleman who is entering at the same time. The gentleman is walking a toy poodle on a leash. The poodle is dragging its butt along the entire length of the floor. Ace and Adelle just stare.
 
-ELDERLY MAN
+    ELDERLY MAN
 
 (in a loud voice)
 
 Do you have anything for ringworm?
 
-EXT. SURFSIDE APARTMENT COMPLEX - DAY
+                             EXT. SURFSIDE APARTMENT COMPLEX - DAY
 
 Ace enters the courtyard of a two story U-shaped apartment complex carrying his groceries. It's a crappy joint but he calls it home. Inside an open apartment on the ground floor, the landlord, MR. SHICKADANCE, sits watching TV, stuffing his face with cheese doodles. Ace sneaks past the door and up the stairs.
 
@@ -410,15 +433,15 @@ LANDLORD
 
 Venturaaaaa?
 
-Ace straightens up, but doesn't turn around.
+    Ace straightens up, but doesn't turn around.
 
 ACE
 
 Yes, Satan?
 
-Now Ace turns around in mock surprise.
+    Now Ace turns around in mock surprise.
 
-ACE
+    ACE
 
 Oh, I'm sorry, sir. You sounded like someone else.
 
@@ -426,21 +449,21 @@ LANDLORD
 
 Never mind the wise cracks Venturaaa. You owe me rent!
 
-ACE
+    ACE
 
 Mr. Shickadance… I told you, you're my first priority! As soon as I find the white pigeon, you're paid!!
 
-LANDLORD
+    LANDLORD
 
 I heard animals in there Ventura! I heard 'em again this morning, scratchin' around.
 
-ACE
+    ACE
 
 I never bring my work home with me, sir.
 
-The landlord notices the bags of kibble.
+    The landlord notices the bags of kibble.
 
-LANDLORD
+    LANDLORD
 
 Oh, yeah? What's all this pet food for?
 
@@ -450,29 +473,29 @@ ACE
 
 Fiber.
 
-The landlord isn't buying it.
+    The landlord isn't buying it.
 
 ACE
 
 You wanna take a look for yourself? Go head.
 
-Ace rattles his keys in the door. Then he swings it open and turns on the light. The house is clear. Ace walks in as the landlord stands there snooping and sniffing the air.
+    Ace rattles his keys in the door. Then he swings it open and turns on the light. The house is clear. Ace walks in as the landlord stands there snooping and sniffing the air.
 
-ACE
+    ACE
 
 Well… are you satisfied?
 
-LANDLORD
+    LANDLORD
 
-(still suspicious)
+    (still suspicious)
 
 Yeah, but don't ever let me catch you with an animal in there, that's all!
 
-ACE
+    ACE
 
 Okay then. Take care now. 'Bye 'bye.
 
-The landlord walks away as Ace closes the door.
+    The landlord walks away as Ace closes the door.
 
 ACE
 
@@ -480,9 +503,9 @@ ACE
 
 LLOOSER.
 
-He then turns to the room and gives a distinct whistle.
+    He then turns to the room and gives a distinct whistle.
 
-CHAOS ENSUES! Animals jump out from every direction. Lizards crawl out of drawers, birds fly through the air, all of them gravitating to Ace.
+    CHAOS ENSUES! Animals jump out from every direction. Lizards crawl out of drawers, birds fly through the air, all of them gravitating to Ace.
 
 ACE
 
@@ -490,31 +513,31 @@ ACE
 
 Ooshhooboobooboodoodoo!
 
-INT. MIAMI DOLPHIN HEADQUARTERS - LATER THAT DAY
+    INT. MIAMI DOLPHIN HEADQUARTERS - LATER THAT DAY
 
 The very imposing office of BOBBY RIDDLE, owner of the Miami Dolphins. Riddle, 70, is a take charge, doesn't take crap from anyone type of guy. He is yelling at ROGER PODACTER, an ex-linebacker in his early sixties, and MELISSA ROBINSON, Podacter's attractive assistant.
 
-RIDDLE
+    RIDDLE
 
 I just want to know one thing; How the hell do you lose a 500 pound fish?!
 
-Melissa's about to speak but hesitates.
+    Melissa's about to speak but hesitates.
 
 RIDDLE (CONT.)
 
 What?
 
-MELISSA
+    MELISSA
 
-It's not a fish, sir. It's a mammal.
+    It's not a fish, sir. It's a mammal.
 
-An angry Riddle stands up.
+    An angry Riddle stands up.
 
-RIDDLE
+    RIDDLE
 
 Oh, thank you very much, Mrs. Jacque Cousteau!
 
-PODACTER
+    PODACTER
 
 Bob, she didn't mean anything by it.
 
@@ -532,15 +555,15 @@ RIDDLE (CONT.)
 
 All I care about is winning this Super Bowl! I want the players' head in the right place. Shit, Roger, you've been in this game long enough, you know how superstitious players are. Our quarterback's been putting his socks on backwards since high school. And I got a lineman who hasn't washed his jock in two years because he thinks flies are lucky! I want that god damn fish on the field Super Bowl Sunday! FIND THE FISH, OR FIND NEW JOBS!
 
-INT. HALLWAY - CONTINUOUS ACTION
+    INT. HALLWAY - CONTINUOUS ACTION
 
 An upset Podacter and Melissa walk through the hallway.
 
-PODACTER
+    PODACTER
 
 Why did it have to happen now? I got three stinking years left till retirement.
 
-MELISSA
+    MELISSA
 
 I've got forty.
 
@@ -550,7 +573,7 @@ I'll tell you who did it. It was those goddamn animal rights nuts! Always out th
 
 They stop outside Melissa's office by her secretary's desk.
 
-MELISSA
+    MELISSA
 
 The police are checking into the animal rights people.
 
@@ -558,19 +581,19 @@ The police are checking into the animal rights people.
 
 Martha, have the police called back about the dolphin yet?
 
-MARTHA
+    MARTHA
 
-No, but I wanted to tell you, when I lost my Cuddles, I hired a pet detective.
+    No, but I wanted to tell you, when I lost my Cuddles, I hired a pet detective.
 
-PODACTER
+    PODACTER
 
 A what?
 
-MARTHA
+    MARTHA
 
-A pet detective.
+    A pet detective.
 
-MELISSA
+    MELISSA
 
 Thanks Martha, but we'd better leave this to professionals.
 
@@ -578,23 +601,23 @@ MARTHA
 
 Well actually, he was quite good. Pet detection is a very involved, highly scientific process.
 
-CUT TO:
+    CUT TO:
 
-EXT. ROOF OF HOUSE - SAME TIME
+    EXT. ROOF OF HOUSE - SAME TIME
 
 CLOSE ON ACE - COOING like a pigeon. Widen to reveal, Ace precariously perched on the roof of a two story building. He is four feet away from "The" pigeon. Ater a beat, he makes a mad, spastic, yet scientific, lunge for the bird.
 
-ACE
+    ACE
 
 AAAAAAAAAAAAAAAAAHHHHHHHH!!!!!!!
 
-The bird makes a clean getaway. Unable to stop his momentum, Ace flies past the edge of the building and slides down the side of the roof.
+    The bird makes a clean getaway. Unable to stop his momentum, Ace flies past the edge of the building and slides down the side of the roof.
 
-EXT. GROUND - CONTINUOUS ACTION
+    EXT. GROUND - CONTINUOUS ACTION
 
 BAM!!! Ace crashes to the ground. As he lies face down, in a heap of trash, his beeper goes off.
 
-EXT. DOLPHIN HEADQUARTERS/BOBBY RIDDLE STADIUM - DAY
+    EXT. DOLPHIN HEADQUARTERS/BOBBY RIDDLE STADIUM - DAY
 
 Parking lot. Ace's clunker drives by some real nice cars. Employees stare at him.
 
@@ -602,33 +625,33 @@ INT. SECURITY CHECK POINT - DAY
 
 A stern guard is admitting people into the stadium. He scans each one with a security detection wand.
 
-MAN #1
+    MAN #1
 
 Art Wheeler. Sporting supplies.
 
-The guard scans him. He goes.
+    The guard scans him. He goes.
 
-MAN #2
+    MAN #2
 
 Tom Anderson. Concessions.
 
-The guard scans him. He goes.
+    The guard scans him. He goes.
 
-ACE
+    ACE
 
 Ace Ventura. Pet detective.
 
-The guard stares at Ace, accusingly.
+    The guard stares at Ace, accusingly.
 
-INT. MELISSA'S OFFICE - DAY
+    INT. MELISSA'S OFFICE - DAY
 
 Martha enters.
 
-MARTHA
+    MARTHA
 
 Ah… Mr. Ventura to see you.
 
-MELISSA
+    MELISSA
 
 Okay, send him in.
 
@@ -650,39 +673,39 @@ Super Bowl week. Security's tight. Mr. Ventura, I'll get right to the point…
 
 She slips a tape in the VCR and gestures for Ace to sit.
 
-MELISSA
+    MELISSA
 
 Our mascot was stolen from his tank last night. Are you familiar with Snowflake?
 
-The tape shows Snowflake doing a trick. The trainer, dressed like a quarterback, shouts out signals.
+    The tape shows Snowflake doing a trick. The trainer, dressed like a quarterback, shouts out signals.
 
 TRAINER (ON TAPE) Blue! 42! Blue! 42! Hut! Hut!
 
-Snowflake swims over, snatches the small football out of the trainer's hand, swims the length of the pool, does an end zone dance on his tail, then returns the ball to the trainer.
+    Snowflake swims over, snatches the small football out of the trainer's hand, swims the length of the pool, does an end zone dance on his tail, then returns the ball to the trainer.
 
 MELISSA (O.S.)
 
 We got Snowflake from the Miami Seaquarium. He's a rare Bottle Nose Dolphin. That's the new trick he was going to do during the half-time show.
 
-While Ace studies the tape, he chews sunflower seeds in a bird-like fashion, placing the shells in a neat little pile on her desk.
+    While Ace studies the tape, he chews sunflower seeds in a bird-like fashion, placing the shells in a neat little pile on her desk.
 
-MELISSA
+    MELISSA
 
 Would you like an ashtray?
 
-ACE
+    ACE
 
-No, I don't smoke.
+    No, I don't smoke.
 
 He adds more shells to the pile.
 
-Melissa is already wondering if she has made a mistake.
+    Melissa is already wondering if she has made a mistake.
 
-MELISSA
+    MELISSA
 
 To be honest, Mr. Ventura. I'm pretty skeptical. Before today, I didn't even know there was such a thing as a pet detective.
 
-ACE
+    ACE
 
 Well, now that you do, you'll know who to call if your Schnauser ever runs away.
 
@@ -690,9 +713,9 @@ MELISSA
 
 How did you know I have a Schnauser?
 
-Ace pulls a, invisible-to-the-naked-eye dog hair off here blouse and presents it to her.
+    Ace pulls a, invisible-to-the-naked-eye dog hair off here blouse and presents it to her.
 
-ACE
+    ACE
 
 He's young, about five pounds, black coat, white speckles…
 
@@ -700,15 +723,15 @@ He's young, about five pounds, black coat, white speckles…
 
 …likes to chase cars.
 
-MELISSA
+    MELISSA
 
 Very impressive.
 
-ACE
+    ACE
 
 You should see what I can do with a good stool sample.
 
-MELISSA
+    MELISSA
 
 I can hardly wait. Look, we've got a problem. Can you help me or not?
 
@@ -724,7 +747,7 @@ We'll give you three thousand dollars on delivery.
 
 Ace immediately becomes the narrator of a nature show.
 
-ACE
+    ACE
 
 The dolphin is a social creature. Capable of complex communication. Traveling in large groups or schools…
 
@@ -732,17 +755,17 @@ EXT. PLAYING FIELD - A SHORT TIME LATER
 
 The Dolphin players practice. A crowd of reporters interview Marino.
 
-MARINO
+    MARINO
 
 We just choked in 82. We had a chance to win it and we didn't. Nobody's gonna choke this time, and if they do, I'll kill 'em.
 
-Ace and Melissa head for Snowflake's tank.
+    Ace and Melissa head for Snowflake's tank.
 
 MELISSA
 
 The police were here this morning. Apparently, the kidnappers used the back gate.
 
-Ace bends down to look at some tire tracks on the field.
+    Ace bends down to look at some tire tracks on the field.
 
 MELISSA (CONT'D)
 
@@ -752,55 +775,55 @@ ACE
 
 Four wheel drive van… loaded from the rear.
 
-Ace sniffs the turf. Podacter enters nervously.
+    Ace sniffs the turf. Podacter enters nervously.
 
-MELISSA
+    MELISSA
 
 Oh, hi, Roger. How are you holding up?
 
-PODACTER
+    PODACTER
 
-Well if it looks like I'm walking funny it's because I have a bunch on reporters up my ass. They've been asking me about Snowflake all day. Who's this?
+    Well if it looks like I'm walking funny it's because I have a bunch on reporters up my ass. They've been asking me about Snowflake all day. Who's this?
 
-MELISSA
+    MELISSA
 
-Roger Podacter, meet Ace Ventura. Ace is our pet detective.
+    Roger Podacter, meet Ace Ventura. Ace is our pet detective.
 
-Podacter shakes his hand.
+    Podacter shakes his hand.
 
-PODACTER
+    PODACTER
 
 Nice to meet you. Martha Metz recommended you very highly.
 
-ACE
+    ACE
 
 Martha Metz? Martha Metz. Oh yeah, the bitch.
 
-PODACTER
+    PODACTER
 
 What?
 
-ACE
+    ACE
 
-Pekinese. Hyperactive. Lost in Highland Park area. She was half dead when I found her. Is that the tank?
+    Pekinese. Hyperactive. Lost in Highland Park area. She was half dead when I found her. Is that the tank?
 
-They both follow Ace as he makes a B-line.
+    They both follow Ace as he makes a B-line.
 
-EXT. SNOWFLAKE'S TANK - MOMENTS LATER
+    EXT. SNOWFLAKE'S TANK - MOMENTS LATER
 
 The tank is empty.
 
-ACE
+    ACE
 
 Cops drain it?
 
-MELISSA
+    MELISSA
 
-Yes. This morning.
+    Yes. This morning.
 
-Ace hops on the ladder.
+    Ace hops on the ladder.
 
-ACE
+    ACE
 
 If I'm not back in five minutes… call Lloyd Bridges.
 
@@ -814,11 +837,11 @@ ACE
 
 Podacter and Melissa, watching from the rim, look at each other like, "What have we gotten ourselves into?" Podacter spots something.
 
-PODACTER
+    PODACTER
 
 Oh, great.
 
-A hoard or reporters are headed their way.
+    A hoard or reporters are headed their way.
 
 PODACTER (CONT)
 
@@ -840,9 +863,9 @@ MELISSA
 
 I said, get out of the tank! Now!
 
-The reporters draw closer. Podacter heads them off.
+    The reporters draw closer. Podacter heads them off.
 
-REPORTER
+    REPORTER
 
 So where's Snowflake?
 
@@ -850,7 +873,7 @@ PODACTER
 
 Ah… Snowflake is just, ah, not available right now.
 
-REPORTER
+    REPORTER
 
 Come on, I'm supposed to get a shot of his new trick for the evening news.
 
@@ -858,7 +881,7 @@ REPORTER #2
 
 What? Is he sick?
 
-Other reporters chime in.
+    Other reporters chime in.
 
 VARIOUS REPORTERS Did something happen to Snowflake?! What're you hiding..?!
 
@@ -870,37 +893,37 @@ ACE/HEINZ (O.S.)
 
 How cun I be getting dis vork dun mit all da shouting? What for is dis shouting?
 
-REPORTER
+    REPORTER
 
-Who the hell is that?
+    Who the hell is that?
 
-MELISSA
+    MELISSA
 
-That? That's…
+    That? That's…
 
 ACE/HEINZ
 
 Heinz Kissvelvet. I am Trainer of Dolphins. You vant to talk to ze dolphin, you talk to me!
 
-REPORTER
+    REPORTER
 
 What happened to the regular trainer?
 
-ACE/HEINZ
+    ACE/HEINZ
 
-Vy do you care about the dolphin? Do you know him? Does he call you at home? Do you have a dorsal fin?
+    Vy do you care about the dolphin? Do you know him? Does he call you at home? Do you have a dorsal fin?
 
-(beat)
+    (beat)
 
-To train ze dolphin, you must zink like ze dolphin. You must be getting oonside ze dolphin's head! Just yesterday I'm asking Snowflake… "ee, eee, eee." He said, "Eee, eee, eee, eee." Und you can quote him.
+    To train ze dolphin, you must zink like ze dolphin. You must be getting oonside ze dolphin's head! Just yesterday I'm asking Snowflake… "ee, eee, eee." He said, "Eee, eee, eee, eee." Und you can quote him.
 
-Ace spits at the reporters' feet. Podacter jumps in.
+    Ace spits at the reporters' feet. Podacter jumps in.
 
 PODACTER
 
 Gentlemen, please, Coach Shula's press conference is just about to begin. Why don't I take you over there and let, ah, Heinz, do his job.
 
-He ushers the press away.
+    He ushers the press away.
 
 MELISSA
 
@@ -908,13 +931,13 @@ MELISSA
 
 Are you finished, Heinz?
 
-ACE
+    ACE
 
-Not yet.
+    Not yet.
 
-Ace goes to the filter outside the tank, opens it, and pours out its contents – mainly leaves, small twigs and gunk. He roots through it, notices a very tiny amber stone. He smiles to himself.
+    Ace goes to the filter outside the tank, opens it, and pours out its contents – mainly leaves, small twigs and gunk. He roots through it, notices a very tiny amber stone. He smiles to himself.
 
-ACE
+    ACE
 
 Now I'm finished.
 
@@ -922,15 +945,15 @@ EXT. METRO POLICE DEPARTMENT - LATER THAT DAY
 
 A flurry of activity in the detective division. As Ace enters, several cops taunt him on sight, led by the obnoxious, SERGEANT AGUADO.
 
-AGUADO
+    AGUADO
 
 Hey, Ventura! Make any good collars lately?
 
-ANOTHER COP Or were they leashes?
+    ANOTHER COP Or were they leashes?
 
-They all bust up. Aguado spots a bug on the ground.
+    They all bust up. Aguado spots a bug on the ground.
 
-AGUADO
+    AGUADO
 
 Uh oh.
 
@@ -938,33 +961,33 @@ Uh oh.
 
 Homicide, Ventura!
 
-The cops are falling all over themselves laughing.
+    The cops are falling all over themselves laughing.
 
-AGUADO
+    AGUADO
 
 How you gonna solve this one?!
 
-Ace walks up to them and looks at the squashed bug.
+    Ace walks up to them and looks at the squashed bug.
 
-ACE
+    ACE
 
 Good question, Aguado… first I'd establish a motive. In this case the killer saw the size of the bug's dick, and became insanely jealous.
 
-The other cops all react with a big "ooooooo". Aguado has no comeback. Ace comes face to face with him.
+    The other cops all react with a big "ooooooo". Aguado has no comeback. Ace comes face to face with him.
 
-ACE
+    ACE
 
-Then I'd lose thirty pounds porking his wife.
+    Then I'd lose thirty pounds porking his wife.
 
 Aguado suddenly loses it and swings at Ace.
 
-With a lightening move, Ace sidesteps the punch and forces Aguado's face down next to the dead bug.
+    With a lightening move, Ace sidesteps the punch and forces Aguado's face down next to the dead bug.
 
 ACE
 
 Now kiss and make up.
 
-Ace walks off.
+    Ace walks off.
 
 ACE
 
@@ -972,7 +995,7 @@ ACE
 
 LLLOOOSER!
 
-Ace walks to the desk of EMILIO ECHAVEZ, a young energetic member of the homicide division. Ace has a silly impish look on his face.
+    Ace walks to the desk of EMILIO ECHAVEZ, a young energetic member of the homicide division. Ace has a silly impish look on his face.
 
 ACE
 
@@ -980,11 +1003,11 @@ ACE
 
 I miss you.
 
-EMILIO
+    EMILIO
 
 It's not a good time, Ace. If Einhorn sees me talking to you I'm gonna be history.
 
-ACE
+    ACE
 
 Okay. Just tell me what you got on Snowflake. That's all I need.
 
@@ -998,7 +1021,7 @@ ACE
 
 SOUNDS LIKE MY KIND OF A PARTY.
 
-A cop comes to Emilio's desk.
+    A cop comes to Emilio's desk.
 
 COP
 
@@ -1008,29 +1031,29 @@ EMILIO
 
 Ace, please?!
 
-ACE
+        ACE
 
-Just tell me who's working the case?
+    Just tell me who's working the case?
 
 EMILIO
 
 Aguado.
 
-ACE
+    ACE
 
 Aguado?! He's pimple juice! He's the poster child for lead paint chip eaters!
 
-EMILIO
+    EMILIO
 
 Look, Ace. We're a little busy with murderers and drug dealers. A missing dolphin isn't exactly a high priority.
 
-The elevator is getting closer.
+    The elevator is getting closer.
 
-EMILIO
+    EMILIO
 
 Ace, gimme a break will ya?
 
-Ace nonchalantly sits back in a chair, pops a sunflower seed into his mouth and cracks it loudly.
+    Ace nonchalantly sits back in a chair, pops a sunflower seed into his mouth and cracks it loudly.
 
 EMILIO
 
@@ -1042,11 +1065,11 @@ ACE
 
 Any unusual bets being made?
 
-EMILIO
+    EMILIO
 
-Ace, it's the Super Bowl, of course there's bets being made.
+    Ace, it's the Super Bowl, of course there's bets being made.
 
-ACE
+    ACE
 
 What'd you find out about the tank?
 
@@ -1066,7 +1089,7 @@ ACE
 
 You know something?
 
-(again impish)
+    (again impish)
 
 YOU'RE NICE!
 
@@ -1076,23 +1099,23 @@ ACE
 
 What about crazy Philly fans?
 
-The elevator bell rings. Out steps police LT. LOIS EINHORN, mid 30s, with a slender build, a great pair of legs and a bad tude.
+    The elevator bell rings. Out steps police LT. LOIS EINHORN, mid 30s, with a slender build, a great pair of legs and a bad tude.
 
-ACE
+    ACE
 
 Holy Testicle Tuesday!
 
-EINHORN
+    EINHORN
 
-(to Emilio)
+    (to Emilio)
 
 What the hell is he doing here?
 
-ACE
+    ACE
 
-I came to confess. I was the second gunman on the grassy knoll.
+    I came to confess. I was the second gunman on the grassy knoll.
 
-EINHORN
+    EINHORN
 
 Spare me the routine, Ventura. I know you're working the Snowflake case. May I suggest you yield to the experts on this one? We'll find the porpoise.
 
@@ -1102,21 +1125,21 @@ ACE
 
 Whewww… now I feel better!
 
-Ace turns to go.
+    Ace turns to go.
 
 ACE (CONT)
 
 Of course, that might not do any good. You see, nobody's missing a porpoise. It's a dolphin that's been taken. The common Harbor Porpoise has an abrupt snout, pointed teeth, and a triangular thorasic fin, while the Bottlenose Dolphin, or Tursiops Truncatus, has an elongated beak, round, cone-shaped teeth, and a distinctive serrated dorsal appendage. (beat) But I'm sure you already knew that. (beat) That's what turns me on about you. Hey… maybe I'll give you a call sometime, lieutenant. Your number still 911? Alrighty then!
 
-Ace exits.
+    Ace exits.
 
-CUT TO:
+    CUT TO:
 
-INT. TEA ROOM - NIGHT
+    INT. TEA ROOM - NIGHT
 
 A wild thrasher club. An incredible thrash band is on stage cranking. Kids jump wildly into the moshing pit.
 
-Ace enters, sees a burnout at the bar whose head is circling insanely to the music.
+    Ace enters, sees a burnout at the bar whose head is circling insanely to the music.
 
 ACE
 
@@ -1124,15 +1147,15 @@ ACE
 
 Excuse me?! Is Greg here?!
 
-The burnout's head thrashes on. No acknowledgement of Ace.
+    The burnout's head thrashes on. No acknowledgement of Ace.
 
 ACE
 
 Thank you!
 
-Ace heads for the basement stairs.
+    Ace heads for the basement stairs.
 
-INT. BASEMENT STAIRS - NIGHT
+    INT. BASEMENT STAIRS - NIGHT
 
 Ace descends the stairs, stopping at a large steel door. Ace bangs on it three times. A voice is heard from inside.
 
@@ -1140,19 +1163,19 @@ VOICE (O.S.)
 
 Password!
 
-ACE
+    ACE
 
 Tom Vu! I pay for sex! You can too!
 
-CLICK! The door electronically unlatches and slides open.
+    CLICK! The door electronically unlatches and slides open.
 
-INT. BASEMENT - NIGHT
+    INT. BASEMENT - NIGHT
 
 Ace enters. Green Peace "Save the Whales" posters abound. GREG/WOODSTOCK, a laid back, ex-hippy with long gray hair, sits at a very impressive computer set up. Ace and he have their own distinct banter.
 
-A thud from above. Ace looks up.
+    A thud from above. Ace looks up.
 
-ACE'S POV
+    ACE'S POV
 
 Part of the ceiling is made of metal grating, so you can see the bottom of the dance floor. A guy's face gets smashed into the grate. We see that it is the burnout from the club.
 
@@ -1162,7 +1185,7 @@ ACE
 
 Found him!
 
-WOODSTOCK
+    WOODSTOCK
 
 Hey! St. Francis! How's it goin?
 
@@ -1174,17 +1197,17 @@ WOODSTOCK
 
 Do you?
 
-ACE
+    ACE
 
-Don't I? And what are you up to?
+    Don't I? And what are you up to?
 
 WOODSTOCK
 
 Just watching the fishies, man.
 
-There is a BLIP on the computer screen.
+    There is a BLIP on the computer screen.
 
-WOODSTOCK
+    WOODSTOCK
 
 Alright, you're just in time for the party. You see those blips?
 
@@ -1192,13 +1215,13 @@ ACE
 
 I certainly do.
 
-ON THE SCREEN
+    ON THE SCREEN
 
 A map with several ships on the ocean.
 
-He quickly taps in some commands and the ships start sailing in all different directions.
+    He quickly taps in some commands and the ships start sailing in all different directions.
 
-WOODSTOCK
+    WOODSTOCK
 
 That's a Norwegian whaling fleet. I'm sending them new directional coordinates… They'll find Jimmy Hoffa before they find any Humpbacks.
 
@@ -1206,15 +1229,15 @@ ACE
 
 Gravy.
 
-Woodstock moves to a different screen.
+    Woodstock moves to a different screen.
 
-WOODSTOCK
+    WOODSTOCK
 
 Check this out.
 
-More computer graphics come up on the screen.
+    More computer graphics come up on the screen.
 
-WOODSTOCK
+    WOODSTOCK
 
 Just changed the formula for Purina's puppy chow.
 
@@ -1222,29 +1245,29 @@ Just changed the formula for Purina's puppy chow.
 
 Too much filler, don't ya' think?
 
-ACE
+    ACE
 
-(acting turned on)
+    (acting turned on)
 
 I'm very attracted to you right now.
 
 Woodstock chuckles.
 
-WOODSTOCK
+    WOODSTOCK
 
 Are you?
 
-ACE
+    ACE
 
-Aren't I? Can you still tap into all the aquatic supply store in the area?
+    Aren't I? Can you still tap into all the aquatic supply store in the area?
 
 WOODSTOCK
 
 Of course I can. Why?
 
-ACE
+    ACE
 
-I want to trace the sale of any equipment for transporting or housing a dolphin within the past few months…
+    I want to trace the sale of any equipment for transporting or housing a dolphin within the past few months…
 
 WOODSTOCK
 
@@ -1252,17 +1275,17 @@ C'mon, Ace. I thought you might have a challenge for me…
 
 Woodstock starts hacking away.
 
-ACE
+    ACE
 
 Okay then, try to remember the sixties.
 
-WOODSTOCK
+    WOODSTOCK
 
 Wow! God one! Let's see… Marine winch sling, feeder fish, 20,000 gallon tank…
 
 He waits. We hear a beep.
 
-WOODSTOCK
+    WOODSTOCK
 
 That's it. I found the culprit.
 
@@ -1270,17 +1293,17 @@ ACE
 
 Who is it?
 
-WOODSTOCK
+    WOODSTOCK
 
-(dramatically)
+    (dramatically)
 
 …Sea World.
 
-ACE
+    ACE
 
 …bastard.
 
-WOODSTOCK
+    WOODSTOCK
 
 Hang on, hang on…
 
@@ -1290,35 +1313,35 @@ Well, what do we have here? That's a lot of equipment for a civilian.
 
 The printer spits out some data. Woodstock rips off the page and hands it to Ace.
 
-ACE
+    ACE
 
 Ronald Camp? The billionaire?
 
-WOODSTOCK
+    WOODSTOCK
 
-Billionaire and rare fish collector.
+    Billionaire and rare fish collector.
 
-ACE
+    ACE
 
 RRREHEHEALLY!
 
-A PICTURE OF CAMP
+    A PICTURE OF CAMP
 
 Comes up on the computer screen.
 
-WOODSTOCK
+    WOODSTOCK
 
 That, my friend, is the face of the enemy.
 
-He pages through his file on screen.
+    He pages through his file on screen.
 
-WOODSTOCK
+    WOODSTOCK
 
 …Always tryin' to get his hands on endangered species…
 
 Newspaper articles fill the screen. One shows a picture of Camp and some Dolphin players.
 
-ACE
+    ACE
 
 Hold on, this guy's connected with the Dolphins?
 
@@ -1338,7 +1361,7 @@ ACE
 
 Hmmm… I wonder if I can find myself a date.
 
-INT. CAMP'S MANSION - NIGHT
+    INT. CAMP'S MANSION - NIGHT
 
 It's a magnificent home. There is an extremely formal party in progress. Twenty to thirty people having champagne, caviar, and hot air. We see Dan Marino sitting with an audience around him.
 
@@ -1346,9 +1369,9 @@ DAN
 
 We just choked in 82. We had a chance to win and we didn't. But nobody's gonna choke this time; if they do, I'll kill 'em!
 
-Everybody laughs.
+    Everybody laughs.
 
-EXT. CAMP'S MANSION - NIGHT
+    EXT. CAMP'S MANSION - NIGHT
 
 Ace and Melissa climb an impressive stairway leading to Camp's mansion.
 
@@ -1364,7 +1387,7 @@ ACE
 
 Melissa rolls her eyes, then taps a huge door knocker.
 
-MELISSA
+    MELISSA
 
 I swear, if you do anything to embarrass me in front of Camp…
 
@@ -1372,47 +1395,47 @@ ACE
 
 You mean like this?
 
-Ace starts doing a spastic body convulsion. Just then a bald-headed butler, who looks a little like Gavin McCloud, opens the door. Ace doesn't notice until Melissa hits him with her purse.
+    Ace starts doing a spastic body convulsion. Just then a bald-headed butler, who looks a little like Gavin McCloud, opens the door. Ace doesn't notice until Melissa hits him with her purse.
 
 ACE
 
 Owwwe!!!
 
-He sees the butler.
+    He sees the butler.
 
-ACE
+    ACE
 
 Oh, hi Captain Stubing.
 
-Melissa storms in, already pissed.
+    Melissa storms in, already pissed.
 
-INT. CAMP'S MANSION - CONT
+    INT. CAMP'S MANSION - CONT
 
 Ace and Melissa enter. Camp looks over.
 
-CAMP
+    CAMP
 
 Melissa! Glad you could make it! Oh, and who is this?
 
-MELISSA
+    MELISSA
 
-This is my date. He's a… lawyer.
+    This is my date. He's a… lawyer.
 
 CAMP
 
 Well, does he have a name, or should I call him "Lawyer"?
 
-MELISSA
+    MELISSA
 
-I'm sorry, it's Ace - ah, Tom Ace.
+    I'm sorry, it's Ace - ah, Tom Ace.
 
-Ace is very unimpressed with her lying ability. He jumps in.
+    Ace is very unimpressed with her lying ability. He jumps in.
 
 ACE
 
 Tom Ace. Wonderful to meet you, Mr. Camp, and congratualtions on all your success. You smell terrific.
 
-CAMP
+    CAMP
 
 Ah, well, thank you. Please, come in.
 
@@ -1430,7 +1453,7 @@ ACE
 
 Will you just keep him occupied, while I work my magic please.
 
-She crosses the room. He puts the cracker in his mouth and begins to crunch. A man in a tux beside Ace spreads pate' on his own cracker.
+    She crosses the room. He puts the cracker in his mouth and begins to crunch. A man in a tux beside Ace spreads pate' on his own cracker.
 
 ACE
 
@@ -1444,15 +1467,15 @@ INT. CAMP'S MANSION - SECONDS LATER
 
 Ace approaches Camp.
 
-ACE
+    ACE
 
 Excuse me, Ron, I need to use the bathroom?
 
-(palms his stomach, whispering loudly)
+    (palms his stomach, whispering loudly)
 
 I think it's the pate'.
 
-CAMP
+    CAMP
 
 Um, it's just over there.
 
@@ -1460,17 +1483,17 @@ ACE
 
 Thanks. Stuff probably looks better on the way out, huh?
 
-Ace laughs, slaps Camp hard on the back and heads for the bathroom.
+    Ace laughs, slaps Camp hard on the back and heads for the bathroom.
 
-INT. BATHROOM - CONT
+    INT. BATHROOM - CONT
 
 Ace wastes no time. He locks the door, turns on the water faucet, steps onto the toilet seat, opens and climbs out a window.
 
-EXT. MANSION COURT YARD - CONT
+    EXT. MANSION COURT YARD - CONT
 
 Ace drops to the ground. He follows a pathway, through a gazebo and into a doorway, all the time quietly singing the musical score to 'Mission Impossible'.
 
-INT. CAMP'S MANSION - FISH TANKS - CONT
+    INT. CAMP'S MANSION - FISH TANKS - CONT
 
 Ace browses through a myriad of dramatically lit, salt water tanks, still singing. They're all filled with colorful exotic fish. Very impressive, but nothing large enough to house a dolphin. He continues on towards a large door.
 
@@ -1478,15 +1501,15 @@ INT. TANK ROOM - SECONDS LATER
 
 A huge above-ground tank is covered with curtains to discourage onlookers. Ace swings open the large door and enters.
 
-ACE
+    ACE
 
 Gravy.
 
-Ace climbs a ladder on the side of the tank, singing more intensely now. The ladder leads to a narrow catwalk over the center of the water. Ace grabs a feeder fish from a pail and walks carefully out there.
+    Ace climbs a ladder on the side of the tank, singing more intensely now. The ladder leads to a narrow catwalk over the center of the water. Ace grabs a feeder fish from a pail and walks carefully out there.
 
-CLOSE ON ACE. THIS IS IT.
+    CLOSE ON ACE. THIS IS IT.
 
-He looks into the dark pool, but sees nothing. Now he stops singing, quietly squats down and dangles the fish over the water.
+    He looks into the dark pool, but sees nothing. Now he stops singing, quietly squats down and dangles the fish over the water.
 
 ACE
 
@@ -1498,11 +1521,11 @@ A GREAT WHITE LUNGES OUT OF THE WATER AND SNAPS ITS JAWS AN INCH FROM ACE'S FACE
 
 He reels back, falling off the catwalk, into the water.
 
-INT. CAMP'S MANSION - SAME TIME
+    INT. CAMP'S MANSION - SAME TIME
 
 Melissa is admiring some beautiful tropical fish. Camp approaches.
 
-CAMP
+    CAMP
 
 Wonderful, aren't they?
 
@@ -1516,7 +1539,7 @@ CAMP
 
 No matter what is going on in my life, I can always watch them swim and be completely at peace.
 
-INT. INDOOR POOL ROOM - SAME TIME
+    INT. INDOOR POOL ROOM - SAME TIME
 
 The water is still for a moment. Then, Ace breaks the surface.
 
@@ -1526,7 +1549,7 @@ ACE
 
 It's not Snowflake… It's not Snowflake.
 
-Instantly, Ace's body is thrashed around back and forth through the water, the entire length of the pool.
+    Instantly, Ace's body is thrashed around back and forth through the water, the entire length of the pool.
 
 ACE
 
@@ -1534,7 +1557,7 @@ ACE
 
 IT'S NOT SNOWFLAAAAKE!!! IT'S NOT SNOWFLAAAA!!!
 
-INT. CAMP'S MANSION - LATER
+    INT. CAMP'S MANSION - LATER
 
 A line is forming outside the bathroom. Camp and Melissa are seated nearby. He's getting curious.
 
@@ -1542,11 +1565,11 @@ CAMP
 
 Are you sure he's okay? It's been an awfu;;y long time.
 
-MELISSA
+    MELISSA
 
 Who, Tom? Oh, I'm sure he's fine.
 
-Ace suddenly opens the bathroom door and stands there, completely drenched from head to toe, with his pants in shreds. Everyone stops. They all stare at Ace in amazement.
+    Ace suddenly opens the bathroom door and stands there, completely drenched from head to toe, with his pants in shreds. Everyone stops. They all stare at Ace in amazement.
 
 ACE
 
@@ -1554,11 +1577,11 @@ ACE
 
 DO NOT GO IN THERE!
 
-(fanning the air)
+    (fanning the air)
 
 Whewww!!
 
-EXT. CAMP'S MANSION - LATER
+    EXT. CAMP'S MANSION - LATER
 
 Ace and Melissa are exiting. Camp stops in the doorway.
 
@@ -1568,13 +1591,13 @@ CAMP
 
 I'm very sorry, Mr. Ace. I'll have the pluming checked immediately.
 
-ACE
+    ACE
 
 Be sure that you do. If I had been drinking out of that toilet, I might have been killed!
 
-Ace shakes Camp's hand and notices his ring. He holds on to get a better look. It's a very distinct, commemorative ring.
+    Ace shakes Camp's hand and notices his ring. He holds on to get a better look. It's a very distinct, commemorative ring.
 
-Camp wants his hand back but Ace won't let go. Melissa finally drags Ace away.
+    Camp wants his hand back but Ace won't let go. Melissa finally drags Ace away.
 
 MELISSA
 
@@ -1582,11 +1605,11 @@ We'd better go.
 
 Camp looks on and shakes his head.
 
-INT. MELISSA'S CAR - NIGHT
+    INT. MELISSA'S CAR - NIGHT
 
 Ace is thinking. Melissa is pissed.
 
-MELISSA
+    MELISSA
 
 …Y'know, I don't even want to know why your pants are missing! I don't care what happened! You could have cost me my job.
 
@@ -1596,39 +1619,39 @@ ACE
 
 I was wrong about Camp. He's breaking the law but he's not our guy.
 
-MELISSA
+    MELISSA
 
 It's a sure thing! It's definitely him! Just get me in there! Let me work my magic!
 
-Ace takes the stone out of his pocket and studies it intensely.
+    Ace takes the stone out of his pocket and studies it intensely.
 
-ACE
+    ACE
 
 This is the key. Right here!
 
-MELISSA
+    MELISSA
 
 Hiring you was the biggest mistake I ever made!
 
-ACE
+    ACE
 
 So small! So unnoticeable! Yet an invaluable piece… of our twisted little jigsaw puzzle!
 
-Melissa stares at Ace like he's gone crazy. There is a flash of headlights and a car horn. Melissa swerves back into her own lane. Ace drops the stone somewhere on the seat and begins to search for it frantically.
+    Melissa stares at Ace like he's gone crazy. There is a flash of headlights and a car horn. Melissa swerves back into her own lane. Ace drops the stone somewhere on the seat and begins to search for it frantically.
 
 ACE
 
 Damn it!
 
-(to Melissa)
+    (to Melissa)
 
 Try to keep it on the road.
 
-INT. MELISSA'S LIVING ROOM
+    INT. MELISSA'S LIVING ROOM
 
 Melissa enters, followed by Ace.
 
-MELISSA
+    MELISSA
 
 So, you found a pebble in Snowflake's tank. Excuse me while I call CNN.
 
@@ -1638,17 +1661,17 @@ I found it in the filter. And it's not a pebble. It is a rare, triangular cut, o
 
 Ace hands Melissa the stone and quickly goes to one of her bookcases.
 
-MELISSA
+    MELISSA
 
 What are you talking about?
 
-ACE
+    ACE
 
-Tonight I saw the exact same stone in Camp's ring.
+    Tonight I saw the exact same stone in Camp's ring.
 
 Ace finds a book on the Dolphin team and flips through it.
 
-MELISSA
+    MELISSA
 
 I thought you said he didn't do it.
 
@@ -1656,39 +1679,39 @@ ACE
 
 N. Camp's clean. His ring wasn't missing a stone. But whoever was in that tank had a ring just like his.
 
-MELISSA
+    MELISSA
 
 Wait a second. What ring?
 
-Ace hands her the book. It's open to a photo of…
+    Ace hands her the book. It's open to a photo of…
 
 ACE
 
 The 1982 Dolphin AFC Championship ring.
 
-Melissa holds the stone up to the picture. It's a perfect match.
+    Melissa holds the stone up to the picture. It's a perfect match.
 
 ACE
 
 I find the ring with the missing stone, I find Snowflake.
 
-MELISSA
+    MELISSA
 
 How are you gonna do that?
 
-ACE
+    ACE
 
-Simple.
+    Simple.
 
-MUSIC UP
+        MUSIC UP
 
 CUT TO:
 
-EXT. TRACK - DAY
+    EXT. TRACK - DAY
 
 Ace is wheezing and gasping for air as he struggles to jog up beside a large man who's running around the track at a very fast pace. When he finally catches up, he awkwardly tries to catch a glimpse of the man's ring and trips. The man just keeps going.
 
-INT. FOOTLOCKER - DAY
+    INT. FOOTLOCKER - DAY
 
 Ace sits waiting with one shoe off. The store manager, an ex-player for the '82 team, sets down several shoe boxes. Ace checks out the ring.
 
@@ -1700,15 +1723,15 @@ EXT. HOTEL - DAY
 
 Pan a few kids getting autographs from Marino and other players, ending on Ace dressed up and looking like a pimply kid. As the players sign, he checks their rings.
 
-EXT. TRACK - DAY
+    EXT. TRACK - DAY
 
 Ace is again trying to catch the large man on the track. This time, just as he draws near, the man leaves him in the dust.
 
-INT. SPORTS BAR - DAY
+    INT. SPORTS BAR - DAY
 
 Two big guys finish arm wrestling. Ace steps up to challenge. He spends an undue amount of time preparing his grip, as he checks out the ring. Ace finally gets set and gives the "go ahead" nod. He is instantly thrown across the room.
 
-CLOSE ON
+    CLOSE ON
 
 The poster of the '82 team. Another group of players are being crossed out.
 
@@ -1734,7 +1757,7 @@ EXT. MELISSA'S BACKYARD - EARLY EVENING
 
 Ace sits in a lawn chair depressed. Melissa consoles him.
 
-MELISSA
+    MELISSA
 
 Ace, that stone could have come from anywhere. An earring, a necklace…
 
@@ -1748,39 +1771,39 @@ MELISSA
 
 Lt. Einhorn thinks it was an animal rights group. Have you heard of FAN?
 
-ACE
+    ACE
 
-Free Animals Now? Started in 1982 by Chelsea Gamble, daughter of the famous industrialist, Fischer Gamble? Over half a million members from Florida to Finland?
+    Free Animals Now? Started in 1982 by Chelsea Gamble, daughter of the famous industrialist, Fischer Gamble? Over half a million members from Florida to Finland?
 
-(beat)
+    (beat)
 
-No. Who are they?
+    No. Who are they?
 
-MELISSA
+    MELISSA
 
-Did you know that last year they sent threatening letters to 127 college teams, demanding the release of their mascots? At last count –
+    Did you know that last year they sent threatening letters to 127 college teams, demanding the release of their mascots? At last count –
 
 ACE
 
 What do you feed your dog?
 
-We see Melissa's dog lying near Ace's feet.
+    We see Melissa's dog lying near Ace's feet.
 
-MELISSA
+    MELISSA
 
 Ah… dog food, why?
 
-ACE
+    ACE
 
-He's miserable.
+    He's miserable.
 
 MELISSA
 
 What are you talking about?
 
-ACE
+    ACE
 
-He's just very unhappy, I feel sorry for him. Bad diet, isolated environment. It's amazing he's still alive.
+    He's just very unhappy, I feel sorry for him. Bad diet, isolated environment. It's amazing he's still alive.
 
 MELISSA
 
@@ -1794,51 +1817,51 @@ MELISSA
 
 I'm not even gonna' talk to you, please leave.
 
-ACE
+    ACE
 
 What, so you can beat him? Fatty!
 
-MELISSA
+    MELISSA
 
 You… are unbelievable.
 
-The phone rings inside the house. Melissa goes to answer it.
+    The phone rings inside the house. Melissa goes to answer it.
 
-MELISSA
+    MELISSA
 
 Hiring you was a huge mistake!
 
-The door slams and Ace is alone with the dog. After a moment he reaches down to pet it and we all see that it is one of the happiest dogs in the world.
+    The door slams and Ace is alone with the dog. After a moment he reaches down to pet it and we all see that it is one of the happiest dogs in the world.
 
-ACE
+    ACE
 
 You like her, huh?… Yeah, she's alright.
 
 Ace, feeling guilty, walks into the house.
 
-INT. MELISSA'S DEN - CONT
+    INT. MELISSA'S DEN - CONT
 
 Ace walks toward Melissa.
 
-ACE
+    ACE
 
 Look, Melissa, I, ah…
 
 Ace stops when he sees Melissa. She is sitting, holding the phone in her lap with a completely stunned look on her face. Something is very wrong.
 
-EXT. HIGH RISE APARTMENT BUILDING - NIGHT
+    EXT. HIGH RISE APARTMENT BUILDING - NIGHT
 
 Chaos. Police, lights flashing, paramedics, crowds of people.
 
-Ace and Melissa see Roger Podacter's body taken away in an ambulance.
+    Ace and Melissa see Roger Podacter's body taken away in an ambulance.
 
 ACE
 
 You okay?
 
-Melissa nods bravely. Emilio joins them.
+    Melissa nods bravely. Emilio joins them.
 
-ACE
+    ACE
 
 What'd you find?
 
@@ -1848,39 +1871,39 @@ Podacter, Roger. Routine suicide. He was alone. He'd been drinking. No sign of a
 
 Melissa shudders. Ace gives Emilio a "way to go" look.
 
-EMILIO
+    EMILIO
 
 Sorry.
 
-INT. HIGHRISE LOBBY - NIGHT
+    INT. HIGHRISE LOBBY - NIGHT
 
 The three enter. Emilio pushes the button for the elevator.
 
-MELISSA
+    MELISSA
 
 It just seems so out of character. He was going to retire in two years.
 
-ACE
+    ACE
 
 Did he leave a note?
 
-The elevator arrives.
+    The elevator arrives.
 
-EMILIO
+    EMILIO
 
 No. That's nothing unusual. Some do, some don't. He didn't.
 
 The elevator doors close.
 
-INT. PODACTOR'S APARTMENT - MOMENTS LATER
+    INT. PODACTOR'S APARTMENT - MOMENTS LATER
 
 Police are everywhere. Emilio, Ace and Melissa enter and are immediately approached by one of the officers.
 
-EMILIO
+    EMILIO
 
 Miss Robinson, this is officer Carlson.
 
-CARLSON Evening, ma'am. I wonder if you could answer a few questions about the deceased?
+    CARLSON Evening, ma'am. I wonder if you could answer a few questions about the deceased?
 
 Ace slips away, we follow him as he eavesdrops on conversations.
 
@@ -1892,7 +1915,7 @@ I told you, I was across the hall in my apartment, I heard a scream. The door wa
 
 The Manager reiterates her story to the cop. The Manager is about 100 years old.
 
-MANAGER
+    MANAGER
 
 …The place was empty, except for the damn dog in the other room. Then I opened the balcony door, looked over the railing, and… splat, bang, pancake time…
 
@@ -1902,29 +1925,29 @@ PODACTER'S DESK
 
 in perfect order.
 
-Next, he notices police coming in and out of the balcony, closing the door behind them, shutting out the noise.
+    Next, he notices police coming in and out of the balcony, closing the door behind them, shutting out the noise.
 
-INT. PODACTER'S BEDROOM - NIGHT
+    INT. PODACTER'S BEDROOM - NIGHT
 
 A dog is cowering in the corner. Ace tries to comfort the little guy.
 
-ACE
+    ACE
 
 Hey, fella, have a bad night?
 
-Ace examines its paws.
+    Ace examines its paws.
 
-Ace then gets down and finds scratches in the door. TWO FEET interrupt.
+    Ace then gets down and finds scratches in the door. TWO FEET interrupt.
 
-Ace stands. He is face to face with Einhorn.
+    Ace stands. He is face to face with Einhorn.
 
-EINHORN
+    EINHORN
 
-Who let Dr. Doolittle in?
+    Who let Dr. Doolittle in?
 
-Emilio steps in immediately.
+    Emilio steps in immediately.
 
-EMILIO
+    EMILIO
 
 Ah, Lieutenant. He came with Miss Robinson –
 
@@ -1934,7 +1957,7 @@ This is official police business. We'll let you know if the coroner finds any ti
 
 Cops snicker.
 
-EMILIO
+    EMILIO
 
 I just thought since Melissa –
 
@@ -1942,13 +1965,13 @@ ACE
 
 E, forget it. She's right. Besides, I wouldn't want someone tracing my steps and pointing out all the mistakes I made.
 
-Ace crosses to…
+    Ace crosses to…
 
 EXT. PODACTER'S BALCONY - CONT
 
 Ace examines the area. Einhorn is in hot pursuit.
 
-EINHORN
+    EINHORN
 
 Oh, so, you don't think this in an obvious suicide, Mr. Pet Detective?
 
@@ -1958,21 +1981,21 @@ Well, I wouldn't say that. Lord knows, there is plenty of evidence here to suppo
 
 On the railing, sure enough, there is a tiny spot of blood.
 
-Einhorn glares at a couple of nearby cops. They look down.
+    Einhorn glares at a couple of nearby cops. They look down.
 
-ACE
+    ACE
 
 May I tell you what I think happened? Alrighty then!
 
-Ace moves as he talks.
+    Ace moves as he talks.
 
-ACE
+    ACE
 
 Roger Podacter went out after work. He had a few drinks, and he came home. But he wasn't alone. Someone was with him in this apartment. There was a struggle, and then Roger Podacter was thrown over that balcony. Roger Podacter didn't commit suicide. He was murdered.
 
-A beat as everyone considers this.
+    A beat as everyone considers this.
 
-EINHORN
+    EINHORN
 
 Well, that's a very entertaining story, but real detectives have to worry about that little thing lawyers call evidence.
 
@@ -1988,7 +2011,7 @@ NEXT TIME YOU DON'T HAVE A CLUE COME ON BACK TO CLUE CORNER! BOOP!
 
 Everyone looks to Einhorn.
 
-EINHORN
+    EINHORN
 
 Not a bad try for a pet detective, but not near conclusive enough for us real investigators.
 
@@ -1996,31 +2019,31 @@ Not a bad try for a pet detective, but not near conclusive enough for us real in
 
 First, people buy lottery tickets everyday. It's a habit. It doesn't prove a thing. Second, the dog wasn't suffering from canine trauma, he was suffering from bladder trauma. Sergeant Neilson found a piss stain as big as Lake Huron near the bed. And third, the blood on the railing. Simple. He doesn't jump far enough and whacks his head. A fact confirmed by the paramedics who found cuts on his scalp, with traces of a white chalky substance. i.e. plaster from the balcony.
 
-Einhorn shows Ace the paramedics report. Everyone is impressed with Einhorn.
+    Einhorn shows Ace the paramedics report. Everyone is impressed with Einhorn.
 
-EINHORN
+    EINHORN
 
-So much for your murder, Ventura.
+    So much for your murder, Ventura.
 
-AGUADO
+    AGUADO
 
 Uh oh, I think I heard a toilet flush. Maybe someone lost their turtle?
 
-Everyone has a laugh. Ace looks beaten.
+    Everyone has a laugh. Ace looks beaten.
 
-ACE
+    ACE
 
 Well, maybe I'm just a little out of my league, here. Einhorn…
 
 Ace holds out his hand, Einhorn shakes it.
 
-ACE
+    ACE
 
 …good work.
 
-Ace and Melissa head for the door.
+    Ace and Melissa head for the door.
 
-ACE
+    ACE
 
 Oh, there is just one more thing, Lieutenant.
 
@@ -2030,23 +2053,23 @@ This man is Roger Podacter's neighbor. He lives across the hall. He said he hear
 
 The neighbor nods. Ace turns to the apartment manager.
 
-ACE
+    ACE
 
 And you said you had to open the balcony door when you keyed into the room?
 
-MANAGER
+    MANAGER
 
-That's right.
+    That's right.
 
 Ace walks out onto the balcony and turns, facing them.
 
-ACE
+    ACE
 
 You're certain you had to open this door?
 
 She nods.
 
-EINHORN
+    EINHORN
 
 What's the point, Ventura?
 
@@ -2066,21 +2089,21 @@ This is double paned, sound- proofed glass. There's no way this neighbor could h
 
 Yes! Yesss! I have exorcised the demons!
 
-(a la Poltergeist)
+    (a la Poltergeist)
 
 This house is clear.
 
-INT. ACE'S CAR - A SHORT TIME LATER
+    INT. ACE'S CAR - A SHORT TIME LATER
 
 Ace drives straight ahead.
 
-MELISSA
+    MELISSA
 
 What are you thinking?
 
-ACE
+    ACE
 
-I'm thinking this whole thing is connected somehow.
+    I'm thinking this whole thing is connected somehow.
 
 (frustrated)
 
@@ -2090,29 +2113,29 @@ MELISSA
 
 You checked all the rings.
 
-ACE
+    ACE
 
 I know, Pessimistress. Could anyone else have gotten a ring that year?
 
-MELISSA
+    MELISSA
 
-No. Camp was the only honoree. Just players and coaches. Everyone in the photo.
+    No. Camp was the only honoree. Just players and coaches. Everyone in the photo.
 
-ACE
+    ACE
 
 …Receipts! There must be receipts! You have a key to the office.
 
-MELISSA
+    MELISSA
 
 Ace this has been a really tough day. Can't we do this in the morning?
 
 Ace looks at his watch.
 
-ACE
+    ACE
 
 Absolutely.
 
-EXT. DOLPHIN HEADQUARTERS - 1:00 AM
+    EXT. DOLPHIN HEADQUARTERS - 1:00 AM
 
 Ace's car screeches to a stop, in front of the building. Ace jumps out, followed by Melissa.
 
@@ -2124,11 +2147,11 @@ MELISSA (O.S.)
 
 These files go back to seventy- eight.
 
-INT. DOLPHIN OFFICE - CONTINUOUS
+    INT. DOLPHIN OFFICE - CONTINUOUS
 
 Ace is flipping through a file cabinet, looking at receipts. Melissa is starting to warm to him.
 
-MELISSA
+    MELISSA
 
 That was pretty impressive, what you did back at the apartment.
 
@@ -2150,47 +2173,47 @@ I don't do humans.
 
 Melissa gets a bit closer.
 
-MELISSA
+    MELISSA
 
 You really love animals, don't you?
 
 Ace stops searching and looks into her eyes.
 
-ACE
+    ACE
 
 I feel a kinship with them. I understand them. Wanna hear something kinda spooky?
 
-MELISSA
+    MELISSA
 
-Sure.
+    Sure.
 
-She gets closer still.
+        She gets closer still.
 
-ACE
+    ACE
 
 One time, when I was about twelve, I had this dream that I was being followed by a dog with rabies. He had these really bloodshot eyes and foam coming out of his mouth… and just before I got to my front door… he jumped on me and sunk his teeth in. Then I woke up, and felt the back of my neck… check this out.
 
-Ace motions for Melissa to feel the back of his neck, but when she does, he snaps at her hand, barking like a vicious dog.
+    Ace motions for Melissa to feel the back of his neck, but when she does, he snaps at her hand, barking like a vicious dog.
 
-ACE
+    ACE
 
 ARARAR!!!
 
-Melissa jumps out of her skin.
+    Melissa jumps out of her skin.
 
-MELISSA
+    MELISSA
 
 Ohhh!! You bastard!
 
-ACE
+    ACE
 
-(snickering)
+    (snickering)
 
 I'm sorry. I couldn't stop myself. Are these all the receipts?
 
-MELISSA
+    MELISSA
 
-(mildly annoyed)
+    (mildly annoyed)
 
 I don't know.
 
@@ -2210,9 +2233,9 @@ ACE
 
 Who the hell is that?
 
-MELISSA
+    MELISSA
 
-What…
+    What…
 
 Ace crosses to a big picture of the '82 team that hangs on the aadjacent wall and points out a player.
 
@@ -2220,15 +2243,15 @@ ACE
 
 That! Who the hell is that?!
 
-He quickly pulls out his crossed out pictures of the team and begins to compare the two.
+    He quickly pulls out his crossed out pictures of the team and begins to compare the two.
 
-MELISSA
+    MELISSA
 
 Oh, that's Ray Finkle… the kicker. Don't you know who Ray Finkle is?
 
-ACE
+    ACE
 
-No! How come he's not in this picture?!
+    No! How come he's not in this picture?!
 
 Melissa checks Ace's photo.
 
@@ -2246,11 +2269,11 @@ ACE
 
 But he got a ring?
 
-MELISSA
+    MELISSA
 
-Definitely.
+    Definitely.
 
-INT. STADIUM/PUBLIC RELATIONS OFFICE - LATER
+        INT. STADIUM/PUBLIC RELATIONS OFFICE - LATER
 
 Ace and Melissa look through Finkle's file on a microfiche screen. Newspaper articles, headshots flash before them…
 
@@ -2258,27 +2281,27 @@ MELISSA
 
 'Replacement Kicker Having Great Year'… 'Ready For Super Bowl, Confident Kicker Boasts'.
 
-ACE
+    ACE
 
 'Field Goal Sails Wide, Dolphins Lose Super Bowl'.
 
-MELISSA
+    MELISSA
 
 The kick heard round the world. That was Finkle. The Dolphins lost by one point.
 
-Another headline hits the screen: FINKLE CONTRACT NOT RENEWED.
+    Another headline hits the screen: FINKLE CONTRACT NOT RENEWED.
 
-MELISSA
+    MELISSA
 
 Poor guy.
 
-ACE
+    ACE
 
 Poor guy with a motive, baby. Where is he now?
 
-MELISSA
+    MELISSA
 
-Last I heard, he went back to his home town, Collier County. He used to work in a bar up there.
+    Last I heard, he went back to his home town, Collier County. He used to work in a bar up there.
 
 ACE
 
@@ -2286,13 +2309,13 @@ ACE
 
 REHEHEALLY.
 
-MELISSA
+    MELISSA
 
 Can you drop me off before you go?
 
-ACE
+    ACE
 
-(shaking his head)
+    (shaking his head)
 
 No way. It may not be safe at your apartment, and you shouldn't be left alone.
 
@@ -2300,7 +2323,7 @@ MELISSA
 
 What do you suggest?
 
-CUT TO:
+    CUT TO:
 
 INT. ACE'S BEDROOM - LATER
 
@@ -2308,11 +2331,11 @@ We see a person's butt under a sheet coming up into frame repeatedly.
 
 SKIN, SWEAT, SHEETS FLY, as Ace and Melissa roll back and forth on the bed. Ace is taking no prisoners.
 
-CUT TO:
+    CUT TO:
 
-50 animals at the bottom of the bed, with eyes as big as silver dollars, watching them silently. We cut back and forth between furious lovemaking and shots of staring animals.
+    50 animals at the bottom of the bed, with eyes as big as silver dollars, watching them silently. We cut back and forth between furious lovemaking and shots of staring animals.
 
-Melissa and Ace simultaneously reach the pinnacle of pleasure.
+    Melissa and Ace simultaneously reach the pinnacle of pleasure.
 
 MELISSA
 
@@ -2320,61 +2343,61 @@ MELISSA
 
 OH man… oh man! Oh wow!
 
-ACE
+    ACE
 
-(mock embarrassment)
+    (mock embarrassment)
 
 I'm sorry… that's never happened to me before. I must be tired.
 
-EXT. HIGHWAY ONE - DAY
+    EXT. HIGHWAY ONE - DAY
 
 Various traveling shots of Ace en route to a 'Deliverance' type town deep in the Everglades. A sign reads "Gas - Food - 2 Miles" but the word "Food" is crossed out.
 
-INT. BILBO'S GAS STATION - DAY
+    INT. BILBO'S GAS STATION - DAY
 
 A pitifully sad country song plays on the radio. FERN BILBO sits at his cluttered desk with the end of an old shotgun in his mouth. He is struggling to reach the trigger.
 
-Through the glass behind him, we see Ace's car pull up to the only gasoline pump.
+    Through the glass behind him, we see Ace's car pull up to the only gasoline pump.
 
 DING! The bell rings. Fern begrudgingly takes the gun out of his mouth, sets it down and walks out.
 
-EXT. BILBO'S GAS STATION - CONT
+    EXT. BILBO'S GAS STATION - CONT
 
 Ace gets out of his car.
 
-ACE
+    ACE
 
 Excuse me, sir. Do you know where I can find the Pigskin Sports Bar?
 
-FERN
+    FERN
 
-Do I have a "kick me" sign on my back, son?
+    Do I have a "kick me" sign on my back, son?
 
-ACE
+    ACE
 
-I wouldn't know anything about that, but if you could point me toward the bar.
+    I wouldn't know anything about that, but if you could point me toward the bar.
 
 Fern breaks down, sobbing.
 
-FERN
+    FERN
 
 They all left me… all of them!
 
-ACE
+    ACE
 
 Well… Hypothetically speaking, say they all left you and went to the Pigskin Sports Bar. How would they have gotten there from here?
 
-FERN
+    FERN
 
-Two miles down and take the first left.
+    Two miles down and take the first left.
 
-ACE
+    ACE
 
 Thanks very much! Take care now, 'bye 'bye then!
 
-Ace gets into his car and pulls out.
+    Ace gets into his car and pulls out.
 
-INT. BILBO'S GAS STATION - CONT
+    INT. BILBO'S GAS STATION - CONT
 
 Fern enters, sits down at the desk, places the end of the shotgun in his mouth, reaches for the trigger and…
 
@@ -2390,19 +2413,19 @@ EXT. PIGSKIN SPORTS BAR - DAY
 
 A weathered dive in the middle of a swamp. Ace parks.
 
-INT PIGSKIN SPORTS BAR - DAY
+    INT PIGSKIN SPORTS BAR - DAY
 
 If depression had a home, this is it. Several dejected men, with various degrees of missing teeth, sit around the bar. A couple hapless guys play pool. One throws darts.
 
-Ace enters, pops a sunflower seed in his mouth and addresses the room.
+    Ace enters, pops a sunflower seed in his mouth and addresses the room.
 
-ACE
+    ACE
 
 Excuse me, guy?! My name is Ace Ventura, I'm a pet detective. I'd like to ask you a few questions if I could.
 
-No one even looks at him.
+    No one even looks at him.
 
-ACE
+    ACE
 
 Just a few questions, that's all.
 
@@ -2414,23 +2437,23 @@ ACE
 
 Who wants gum?!
 
-Again, no reaction. Ace walks over to the bartender and slides a five across the bar.
+    Again, no reaction. Ace walks over to the bartender and slides a five across the bar.
 
-ACE
+    ACE
 
 I'm looking for a guy who used to work here.
 
 The bartender takes the money.
 
-BARTENDER
+    BARTENDER
 
 That right?
 
-ACE
+    ACE
 
-He was a kicker for the Dolphins. Ray Finkle.
+    He was a kicker for the Dolphins. Ray Finkle.
 
-A pool ball flies by Ace's head shattering a mirror behind the bar. All eyes are on Ace.
+    A pool ball flies by Ace's head shattering a mirror behind the bar. All eyes are on Ace.
 
 ACE
 
@@ -2438,7 +2461,7 @@ ACE
 
 That would be a scratch.
 
-TOOTHLESS GIANT
+    TOOTHLESS GIANT
 
 You a friend of Finkle's?
 
@@ -2448,41 +2471,41 @@ ACE
 
 …Yes?
 
-CRASH! The giant guy smashes his bottle.
+    CRASH! The giant guy smashes his bottle.
 
-ACE
+    ACE
 
 Sorry, I have "say the opposite of what you mean" disease.
 
-Several undesirables surround Ace.
+    Several undesirables surround Ace.
 
-TOOTHLESS GIANT
+    TOOTHLESS GIANT
 
 That bastard ruined this town.
 
-ACE
+    ACE
 
 Ewww… I hate that!
 
-HICK #2
+    HICK #2
 
 We bet everything we had on that Super Bowl and that son of a bitch gagged.
 
-ACE
+    ACE
 
 What a diiick!
 
-They all move closer in a threatening manner.
+    They all move closer in a threatening manner.
 
-HICK #3
+    HICK #3
 
 Shanked a goddamn 26 yarder!!!
 
-ACE
+    ACE
 
 Death to Finkle! Death to Finkle!
 
-The bartender steps in.
+    The bartender steps in.
 
 BARTENDER
 
@@ -2490,47 +2513,47 @@ We had a hell of a thing going here. Tourists coming to see Ray Finkle's home to
 
 The bartender points to a payphone. It has had the shit beaten out of it. Every expletive you can think of is graffitied around it.
 
-ACE
+    ACE
 
 Did he come back after the Super Bowl?
 
-BARTENDER
+    BARTENDER
 
-Yeah… but the boys here had ways of letting him know he wasn't welcome.
+    Yeah… but the boys here had ways of letting him know he wasn't welcome.
 
 HICK #1
 
 Excuse me, I gotta take a wicked Finkle.
 
-Laughter.
+    Laughter.
 
-TOOTHLESS GIANT
+    TOOTHLESS GIANT
 
 What's the difference between Finkle and a jackass? A jackass can kick.
 
 More laughter.
 
-HICK #2
+    HICK #2
 
 Why did Finkle cross the road?!
 
-ACE
+        ACE
 
-(facetious)
+        (facetious)
 
-Wait… I know this one.
+    Wait… I know this one.
 
-HICK #2
+    HICK #2
 
 He didn't! And I've got the hair on my bumper to prove it!
 
-Maniacal laughter and chanting ensues.
+    Maniacal laughter and chanting ensues.
 
-MOB
+    MOB
 
 FINKLE SUCKS! FINKLE SUCKS! FINKLE SUCKS!
 
-ACE
+    ACE
 
 It's good you're dealing with the anger.
 
@@ -2538,9 +2561,9 @@ It's good you're dealing with the anger.
 
 I don't suppose anyone's seen him lately?
 
-The chanting stops and the guys all look at Ace.
+    The chanting stops and the guys all look at Ace.
 
-BARTENDER
+    BARTENDER
 
 No… but we know where his parents live! Don't we boys?!
 
@@ -2548,13 +2571,13 @@ HICK #1
 
 Yeah! We sure do!
 
-They all laugh insanely again.
+    They all laugh insanely again.
 
-EXT. HOUSE - DAY
+    EXT. HOUSE - DAY
 
 Ace pulls up outside a two-story stilt house. The place has been completely desecrated by graffiti, bullet holes and paint bombs. Toilet paper is strewn through the trees. Ace walks up and knocks on the door. A wooden peephole slides open revealing a suspicious pair of eyes.
 
-ACE
+    ACE
 
 …Hi, I'm looking for Ray Finkle.
 
@@ -2566,33 +2589,33 @@ ACE
 
 And a clean pair of shorts.
 
-A deep gruff voice from inside.
+    A deep gruff voice from inside.
 
-VOICE
+    VOICE
 
 What do you know about Ray Finkle?
 
-ACE
+    ACE
 
-Southpaw soccer style kicker. Graduated from Collier High in June, 1976. Stetson University honors graduate, class of 1980. Holds two NCAA division one records. One for most points in a season, one for distance. Former nickname The Mule. The first and only pro athlete ever to come out of Collier County. And one helluva model American.
+    Southpaw soccer style kicker. Graduated from Collier High in June, 1976. Stetson University honors graduate, class of 1980. Holds two NCAA division one records. One for most points in a season, one for distance. Former nickname The Mule. The first and only pro athlete ever to come out of Collier County. And one helluva model American.
 
-After a beat the peephole closes. The door slowly creaks open revealing MR. FINKLE, an unsmiling, taciturn, elderly man holding the gun.
+    After a beat the peephole closes. The door slowly creaks open revealing MR. FINKLE, an unsmiling, taciturn, elderly man holding the gun.
 
-MR. FINKLE
+    MR. FINKLE
 
 Are you another one of them scumbags from 'Hard Copy'?
 
-ACE
+    ACE
 
-No, sir. I'm just a very big Finkle fan. This is my Graceland, sir.
+    No, sir. I'm just a very big Finkle fan. This is my Graceland, sir.
 
 Mrs. Finkle, a sweet, adorable elderly woman comes over.
 
-MRS. FINKLE
+    MRS. FINKLE
 
 Will you put that gun down. The boy's a fan of our son. So nice to meet you. I'm Ray's mother, and this is Ray's father.
 
-INT. FINKLE HOUSE - DAY
+    INT. FINKLE HOUSE - DAY
 
 ACE
 
@@ -2606,37 +2629,37 @@ ACE
 
 Are you expecting Ray anytime soon?
 
-MRS. FINKLE
+    MRS. FINKLE
 
-Oh, yes. I expect him home any minute.
+    Oh, yes. I expect him home any minute.
 
-Ace is surprised.
+    Ace is surprised.
 
-MRS. FINKLE
+    MRS. FINKLE
 
 Would you like some cookies? I just baked them.
 
-Mrs. Finkle hurries off to the kitchen. Ace smiles at Mr. Finkle. The guy's a corpse.
+    Mrs. Finkle hurries off to the kitchen. Ace smiles at Mr. Finkle. The guy's a corpse.
 
 ACE
 
 Wow… Ray Finkle's house! Can't wait to meet him!
 
-MR. FINKLE
+    MR. FINKLE
 
 Ray ain't comin' home.
 
-ACE
+    ACE
 
 But your wife said you expect him home any minute.
 
-MR. FINKLE
+    MR. FINKLE
 
 She expects him home any minute.
 
-He points to his head, and looks toward the kitchen.
+    He points to his head, and looks toward the kitchen.
 
-MR. FINKLE
+    MR. FINKLE
 
 Engines runnin but there's no one behind the wheel. Ten years ago our son escaped from Shady Acres Psychiatric Hospital in Tampa. They're still buggin' us to pick up his stuff.
 
@@ -2648,9 +2671,9 @@ MRS. FINKLE
 
 It was all that Dan Marino's fault, everyone knows that. If he had held the ball laces out, like you're supposed to, Ray would never have missed that kick. Dan Marino should die of Gonorrhea and rot in Hell. Would you like a cookie, son?
 
-Ace takes a cookie. Holding it up.
+    Ace takes a cookie. Holding it up.
 
-ACE
+    ACE
 
 Hey, what do ya know. They're little footballs.
 
@@ -2658,9 +2681,9 @@ MRS. FINKLE
 
 Laces OUT!
 
-CRASH!! A large stone smashes through the window. Outside, a pickup truck filled with drunken patrons from the Pigskin Sports Bar drives by yelling their Finkle chant.
+    CRASH!! A large stone smashes through the window. Outside, a pickup truck filled with drunken patrons from the Pigskin Sports Bar drives by yelling their Finkle chant.
 
-MOB
+    MOB
 
 FINKLE SUCKS! FINKLE SUCKS!…
 
@@ -2668,7 +2691,7 @@ MRS. FINKLE
 
 I told you he had a lot of fans.
 
-Mrs. Finkle picks up the rock and hurls it out the broken window. It hits one of the vandals, knocking him out cold, as the truck peels away.
+    Mrs. Finkle picks up the rock and hurls it out the broken window. It hits one of the vandals, knocking him out cold, as the truck peels away.
 
 MR. FINKLE
 
@@ -2676,7 +2699,7 @@ MR. FINKLE
 
 She got the arm. The boy got the leg.
 
-INT. HALLWAY - A SHORT TIME LATER
+    INT. HALLWAY - A SHORT TIME LATER
 
 Mrs. Finkle and Ace are walking down the hallway to Ray's room.
 
@@ -2694,29 +2717,29 @@ ACE
 
 …Oooh boy.
 
-MRS. FINKLE
+    MRS. FINKLE
 
 What a sports nut, huh?
 
-In the center of the room is a movie projector.
+    In the center of the room is a movie projector.
 
-ACE
+    ACE
 
 May I?
 
-MRS. FINKLE
+    MRS. FINKLE
 
-Oh yes. By all means.
+    Oh yes. By all means.
 
-Mrs. Finkle shuts the lights off. Ace turns on the projector.
+    Mrs. Finkle shuts the lights off. Ace turns on the projector.
 
-The film flickers over the "Marino must die!!!" graffiti. It's the final play of the Super Bowl. Marino takes the snap, Finkle kicks and the ball sails wide. The film repeats itself ad infinitum.
+    The film flickers over the "Marino must die!!!" graffiti. It's the final play of the Super Bowl. Marino takes the snap, Finkle kicks and the ball sails wide. The film repeats itself ad infinitum.
 
 EXT. BILBO'S GAS STATION - DAY
 
 Ace on the payphone. We see the gas station in the background.
 
-ACE
+    ACE
 
 Melissa, it's Ace.
 
@@ -2726,7 +2749,7 @@ MELISSA
 
 Ace? Where are you?
 
-INTERCUT ACE/MELISSA
+    INTERCUT ACE/MELISSA
 
 ACE
 
@@ -2736,9 +2759,9 @@ MELISSA
 
 Marino? Why?
 
-ACE
+    ACE
 
-Because he's about to join Snowflake. I gotta know where he is.
+    Because he's about to join Snowflake. I gotta know where he is.
 
 MELISSA
 
@@ -2758,13 +2781,13 @@ MELISSA
 
 Ah, he had practice. Then… he has a commercial shoot out at the Prescott Sound Stage.
 
-ACE
+    ACE
 
 Where is that?
 
-MELISSA
+    MELISSA
 
-It's on Route One by the Six Cut Off. Thirty minutes outside of town.
+    It's on Route One by the Six Cut Off. Thirty minutes outside of town.
 
 ACE
 
@@ -2788,33 +2811,33 @@ WELCOME TO COLLIER COUNTY. HOME OF RAY FINKLE"
 
 The "F" in "FINKLE" has been replaced with "ST" in spray paint.
 
-INT. PRESCOTT STUDIOS - DAY
+    INT. PRESCOTT STUDIOS - DAY
 
 Rehearsal for an Isotoner ad in progress.
 
-MARINO
+    MARINO
 
 …So I protect the hands that protect me. With Isotoners.
 
-Marino gets carted off by FIVE HUGE LINEMEN.
+    Marino gets carted off by FIVE HUGE LINEMEN.
 
-DIRECTOR
+    DIRECTOR
 
 Good. Remember, exit camera right. That's to your left. Alright, let's get ready to shoot this.
 
-FIRST A.D.
+    FIRST A.D.
 
 (to the linemen)
 
 Helmets on this time!
 
-The linemen disperse.
+    The linemen disperse.
 
-EXT. STREET - DAY
+    EXT. STREET - DAY
 
 Ace runs a red light causing cars to skid in every direction.
 
-INT. PRESCOTT STUDIO - DAY
+    INT. PRESCOTT STUDIO - DAY
 
 Marino is in the make-up chair.
 
@@ -2828,9 +2851,9 @@ DIRECTOR
 
 Dan, are you ready?
 
-MARINO
+    MARINO
 
-Ah, sure.
+    Ah, sure.
 
 (to girl)
 
@@ -2840,41 +2863,41 @@ EXT. STUDIO - DAY
 
 The cops race onto the lot.
 
-INT. STUDIO - DAY
+    INT. STUDIO - DAY
 
 Marino takes center stage.
 
-A.D. Quiet on the set… roll… speed…
+    A.D. Quiet on the set… roll… speed…
 
 DIRECTOR
 
 …And action!
 
-MARINO
+    MARINO
 
 Hi, I'm Dan Marino. If anyone knows the value of protection, it's me…
 
 We see an old clip of Marino getting sacked.
 
-EXT. STUDIO - DAY
+    EXT. STUDIO - DAY
 
 Cops scramble on foot to the sound stage.
 
-INT. STUDIO - DAY
+    INT. STUDIO - DAY
 
 The commercial is winding up. The linemen ready themselves.
 
-MARINO
+    MARINO
 
 …So I protect the hands that protect me. With Isotoners.
 
-The five linemen grab Marino and run off camera.
+    The five linemen grab Marino and run off camera.
 
-DIRECTOR
+    DIRECTOR
 
 And cut! That was good. Again from one.
 
-But two of the linemen keep running with Marino…
+    But two of the linemen keep running with Marino…
 
 DIRECTOR
 
@@ -2888,15 +2911,15 @@ What the hell are they doing?
 
 …Right out the studio door. Then the cops arrive and race after them. Two linemen stumble out of the dressing room holding their heads.
 
-EXT. SOUND STAGE - DAY
+    EXT. SOUND STAGE - DAY
 
 Ace skids around a corner, looking way up ahead.
 
-He sees Marino being shoved into a black 81 Ford Bronco. They drive off.
+    He sees Marino being shoved into a black 81 Ford Bronco. They drive off.
 
-The cops come out of the building on foot. Too late.
+    The cops come out of the building on foot. Too late.
 
-Ace in hot pursuit almost runs the cops down.
+    Ace in hot pursuit almost runs the cops down.
 
 ACE
 
@@ -2908,13 +2931,13 @@ EXT. CITY STREETS - DAY
 
 Ace's head is out the driver's window through the entire chase. As he starts gaining on the bad guys, they start shooting. Ace wisely puts his head inside the car.
 
-ACE'S POV
+    ACE'S POV
 
 He can't see shit through his broken windshield.
 
 He pokes his head out again. They shoot again.
 
-Ace swerves off the road into…
+    Ace swerves off the road into…
 
 EXT. PARK - DAY
 
@@ -2926,7 +2949,7 @@ ACE
 
 I did it! I did it! I caught the white pigeon! I caught the white pigeon!
 
-Ace jumps out of his car and starts skipping around the park with the pigeon held high over his head. He looks insane.
+    Ace jumps out of his car and starts skipping around the park with the pigeon held high over his head. He looks insane.
 
 ACE (CONT'D)
 
@@ -2936,9 +2959,9 @@ I caught the white pigeon, I caught the white pigeon, I caught the white…
 
 Ace slows down and begins to look around warily. There are now an unusual number of birds perched on the telephone wires around the park and on the monkey bars, and on the swings.
 
-The sky grows darker. He slowly turns and tries to get back to the car. All the birds take flight.
+    The sky grows darker. He slowly turns and tries to get back to the car. All the birds take flight.
 
-Ace sets the white pigeon free and starts to run, but it's too late. The birds are on him. Pecking, and gouging, and ripping his flesh.
+    Ace sets the white pigeon free and starts to run, but it's too late. The birds are on him. Pecking, and gouging, and ripping his flesh.
 
 Now we see ten birds flying away with a leg. Five birds flying away with an arm. Twenty others are trying to take Ace's left arm off, and half his face is missing…
 
@@ -2946,41 +2969,41 @@ ACE
 
 AAAAAAAAAAHHHHHHHHHHHH!!!
 
-CUT TO:
+    CUT TO:
 
-EXT. PARK - DAY
+    EXT. PARK - DAY
 
 Ace is back in his wrecked car with his arm hanging out the window. A small boy is pulling it.
 
-BOY
+    BOY
 
 Hey mister. Hey mister.
 
-Ace come to suddenly, and looks at the boy with a crazed expression.
+    Ace come to suddenly, and looks at the boy with a crazed expression.
 
 BOY (CONT'D)
 
 That was a really neat crash, mister. Do it again!
 
-Ace sighs with relief.
+    Ace sighs with relief.
 
-EXT. MIAMI - DAY
+    EXT. MIAMI - DAY
 
-Various headlines hit the news stands: "MARINO KIDNAPPED" "STAR QB MISSING" "DAN WHERE ARE YOU?"
+    Various headlines hit the news stands: "MARINO KIDNAPPED" "STAR QB MISSING" "DAN WHERE ARE YOU?"
 
 THE GLOBE HEADLINE: "MARINO ABDUCTED BY ALIEN FRANCHISE!" On the cover, Marino stands with several Space Aliens in football gear.
 
-EXT. POLICE STATION - LATER THAT DAY
+    EXT. POLICE STATION - LATER THAT DAY
 
 A chaotic press conference. Zillions of REPORTERS shout all kinds of questions at Einhorn.
 
-REPORTER
+    REPORTER
 
 Lieutenant, have there been any ransom demands?
 
-EINHORN
+    EINHORN
 
-There's been no communication with the kidnappers at this time.
+    There's been no communication with the kidnappers at this time.
 
 REPORTER #2
 
@@ -2990,13 +3013,13 @@ EINHORN
 
 As of now, the game is going on as scheduled.
 
-REPORTER #3
+    REPORTER #3
 
 Why wasn't the public told about Snowflake's kidnapping?
 
-EINHORN
+    EINHORN
 
-Secrecy was essential. We didn't want any public interference.
+    Secrecy was essential. We didn't want any public interference.
 
 REPORTER
 
@@ -3008,11 +3031,11 @@ I'm sorry. I can't comment any further. Now if you'll excuse me.
 
 Einhorn pushes her way through the crowd of reporters.
 
-INT. POLICE STATION - MOMENTS LATER
+    INT. POLICE STATION - MOMENTS LATER
 
 Einhorn is barking out orders to other cops as she heads for her office.
 
-EINHORN
+    EINHORN
 
 Emilio, get me the autopsy on Podacter! Aguado, send out a memo. No one talks to the press…
 
@@ -3022,31 +3045,31 @@ EINHORN
 
 …And somebody get me a cup of coffee!
 
-ACE
+    ACE
 
-(TV announcer's voice)
+    (TV announcer's voice)
 
 Tonight on "MIAMI VICE", Crockett geets the boss coffee!
 
-Ace is in her office, popping sunflower seeds, kicking back. Einhorn walks to her private bathroom.
+    Ace is in her office, popping sunflower seeds, kicking back. Einhorn walks to her private bathroom.
 
-EINHORN
+    EINHORN
 
 Ventura, when I get out of this bathroom, you better be gone.
 
-ACE
+    ACE
 
 Is it number one or number two?
 
-Einhorn turns and glares at Ace.
+    Einhorn turns and glares at Ace.
 
-ACE
+    ACE
 
 I just want to know how much time I have.
 
-Einhorn goes to the sink and begins washing her hands.
+    Einhorn goes to the sink and begins washing her hands.
 
-ACE
+    ACE
 
 Oh, by the way, I went ahead and solved that pesky, Snowflake/Podacter/Marino thing.
 
@@ -3056,39 +3079,39 @@ EINHORN (O.S.)
 
 Oh yeah?
 
-ACE
+    ACE
 
-yeah, ever hear of a former Dolphin kicker named Ray Finkle?
+    yeah, ever hear of a former Dolphin kicker named Ray Finkle?
 
-The water shuts off. Einhorn appears around the corner.
+    The water shuts off. Einhorn appears around the corner.
 
-EINHORN
+    EINHORN
 
 Alright, Ventura. Make it quick.
 
-ACE
+    ACE
 
 I found a rare stone at the bottom of Snowflake's tank. It's from a Dolphin '82 AFC Championship ring. It would have been a Super Bowl ring, but Ray Finkle missed the big kick. Blames the whole thing on Marino. We're talking paranoid, delusional psychosis. I saw the guy's room… Cozy, if you're Hannibal Lector.
 
-EINHORN
+    EINHORN
 
 So how does Roger Podacter fit in?
 
-ACE
+    ACE
 
-My guess is Finkle was snooping around. Podacter recognized him. End of story. As for Snowflake… they gave him Finkle's number, and taught him how to kick a field goal. Finkle took it personally.
+    My guess is Finkle was snooping around. Podacter recognized him. End of story. As for Snowflake… they gave him Finkle's number, and taught him how to kick a field goal. Finkle took it personally.
 
 Einhorn listens with great interest.
 
-EINHORN
+    EINHORN
 
 So where is Finkle, now?
 
-ACE
+    ACE
 
-He broke out of a metal hospital. Did a Claude Raines. He's been planning his revenge for years. Waiting for the perfect time to get back at the Dolphins. The time when it would hurt them the most. Super Bowl time! Man, I'm tired of being right!
+    He broke out of a metal hospital. Did a Claude Raines. He's been planning his revenge for years. Waiting for the perfect time to get back at the Dolphins. The time when it would hurt them the most. Super Bowl time! Man, I'm tired of being right!
 
-Einhorn walks in front and sits on the edge of the desk. She's totally softened her demeanor.
+    Einhorn walks in front and sits on the edge of the desk. She's totally softened her demeanor.
 
 EINHORN
 
@@ -3098,15 +3121,15 @@ ACE
 
 Ahh, could you talk in my good ear. I thought I heard you call me Ace.
 
-Einhorn gets real close.
+    Einhorn gets real close.
 
-EINHORN
+    EINHORN
 
 Maybe I was wrong about you. Maybe you are more than just a pet dick.
 
-SHE SUDDENLY PLANTS A MAJOR, TONSIL CLEANING, OPEN MOUTHED KISS ON ACE. Objects are knocked off the desk as they lean back.
+    SHE SUDDENLY PLANTS A MAJOR, TONSIL CLEANING, OPEN MOUTHED KISS ON ACE. Objects are knocked off the desk as they lean back.
 
-ACE
+    ACE
 
 Your gun's digging into my hip.
 
@@ -3122,19 +3145,19 @@ ACE
 
 Maybe later.
 
-EINHORN
+    EINHORN
 
 What is it? That bony little bitch, Melissa Robinson?
 
-ACE
+    ACE
 
-(defensive)
+    (defensive)
 
-No. You just don't do anything for me.
+    No. You just don't do anything for me.
 
 He quickly adjusts his crotch, to conceal the erection. Einhorn withdraws with a coy smile.
 
-EINHORN
+    EINHORN
 
 I'll be here if you ever want a real woman.
 
@@ -3144,23 +3167,23 @@ EINHORN
 
 What is it?
 
-Aguado opens the door.
+    Aguado opens the door.
 
-AGUADO
+    AGUADO
 
 Everything okay in here? Heard some commotion.
 
-EINHORN
+    EINHORN
 
 Fine, Sergeant.
 
-AGUADO
+    AGUADO
 
 You want me to throw him out?
 
-EINHORN
+    EINHORN
 
-Why don't you throw yourself out.
+    Why don't you throw yourself out.
 
 AGUADO
 
@@ -3168,11 +3191,11 @@ AGUADO
 
 A crestfallen Aguado exits. Ace heads for the door.
 
-EINHORN
+    EINHORN
 
 Ace, I want you to leave everything to us.
 
-ACE
+    ACE
 
 Can't do that, Lieutenant. I was hired to find Snowflake.
 
@@ -3186,7 +3209,7 @@ When I find Snowflake, I'll deliver Marino.
 
 He exits.
 
-INT. TEA ROOM - NIGHT
+    INT. TEA ROOM - NIGHT
 
 A full on thrash metal band is cranking on stage. Kids leap wildly into the moshing pit. The same Burnout is still thrashing his head wildly to the music.
 
@@ -3196,17 +3219,17 @@ ACE
 
 Nice to see you again!
 
-The Burnout just keeps thrashing. Ace spots Woodstock watching the band and joins him.
+    The Burnout just keeps thrashing. Ace spots Woodstock watching the band and joins him.
 
-WOODSTOCK
+    WOODSTOCK
 
 St. Francis, how's it goin'?
 
-ACE
+    ACE
 
-(kidding)
+    (kidding)
 
-That's none of your damn business.
+    That's none of your damn business.
 
 WOODSTOCK
 
@@ -3216,27 +3239,27 @@ ACE
 
 Is it?
 
-WOODSTOCK
+    WOODSTOCK
 
-Anything new on that dolphin?
+    Anything new on that dolphin?
 
-ACE
+    ACE
 
-Got his picture on some tuna cans, but nothing so far.
+    Got his picture on some tuna cans, but nothing so far.
 
-A singer ROARS on stage. He sounds like a garbage disposal full of cutlery.
+    A singer ROARS on stage. He sounds like a garbage disposal full of cutlery.
 
-SINGER Arroohhghhh! Myrrrooohghhhh! Geroooghhh!
+    SINGER Arroohhghhh! Myrrrooohghhhh! Geroooghhh!
 
-WOODSTOCK
+    WOODSTOCK
 
 So, what can I do for you today?
 
-ACE
+    ACE
 
-I need info on a football flunky named Ray Finkle.
+    I need info on a football flunky named Ray Finkle.
 
-WOODSTOCK
+    WOODSTOCK
 
 Sorry, Ace, I can't help you right now. I gotta watch this band! They are the shit!
 
@@ -3244,9 +3267,9 @@ ACE
 
 Are they?
 
-WOODSTOCK
+    WOODSTOCK
 
-Aren't they?
+    Aren't they?
 
 ACE
 
@@ -3254,9 +3277,9 @@ Alright then. Don't worry about it. I mean dolphins aren't exactly an endangered
 
 Ace does his best suffering dolphin impression. Woodstock is no longer enjoying the band.
 
-CUT TO:
+    CUT TO:
 
-INT. BASEMENT - NIGHT
+    INT. BASEMENT - NIGHT
 
 Woodstock is at his computer. Ace looks over his shoulder. Finkle's Social Security information appears on the screen.
 
@@ -3272,9 +3295,9 @@ WOODSTOCK
 
 Is he?
 
-ACE
+    ACE
 
-Isn't he?
+    Isn't he?
 
 Woodstock types in more information. Finkle's TRW flashes on the screen.
 
@@ -3286,17 +3309,17 @@ ACE
 
 Really? What makes you say that?
 
-WOODSTOCK
+    WOODSTOCK
 
-There's two-thousand dollars worth of smelts on his VISA card.
+    There's two-thousand dollars worth of smelts on his VISA card.
 
 After a beat Ace realizes it was a bad joke.
 
-ACE
+    ACE
 
 Please yank me no further. I beg of you.
 
-WOODSTOCK
+    WOODSTOCK
 
 Alright already. The last time this guy used his credit card was June, '84. He rented a car from Avis. And… eww… he was a bad boy. They found it abandoned two months later in South Miami.
 
@@ -3304,17 +3327,17 @@ ACE
 
 Anything else?
 
-WOODSTOCK
+    WOODSTOCK
 
-Nope.
+    Nope.
 
-ACE
+        ACE
 
 Well… you did all you could. Thanks for nothin.
 
-WOODSTOCK
+                                            WOODSTOCK
 
-Hey man, according to this, your friend Ray Finkle doesn't exist.
+    Hey man, according to this, your friend Ray Finkle doesn't exist.
 
 ACE
 
@@ -3324,9 +3347,9 @@ WOODSTOCK
 
 Do you?
 
-ACE
+    ACE
 
-Don't I?
+    Don't I?
 
 INT. TEA ROOM - NIGHT
 
@@ -3338,9 +3361,9 @@ ACE
 
 Did you get all the spiders outta there?
 
-Ace heads out, then freezes. The two thugs that took Marino are standing at the exit. Then they see Ace and start towards him, reaching inside their coats.
+    Ace heads out, then freezes. The two thugs that took Marino are standing at the exit. Then they see Ace and start towards him, reaching inside their coats.
 
-Suddenly the music starts. The burnout's head wails again. His manic gyrations interfere with the thugs long enough for Ace to bolt.
+    Suddenly the music starts. The burnout's head wails again. His manic gyrations interfere with the thugs long enough for Ace to bolt.
 
 One of the thugs pushes the burnout violently against the wall as they pursue Ace.
 
@@ -3352,13 +3375,13 @@ Thanks, man! You're a great dancer!
 
 Ace pushes his way through the crowd. The thugs follow.
 
-Ace nears the stage. It's wild. People are diving off and getting moshed.
+    Ace nears the stage. It's wild. People are diving off and getting moshed.
 
 Before the thugs grab him, Ace runs up and throws himself from the stage. The insane crowd begins to pass him around over their heads.
 
-The thugs exchange a look, then dive after Ace, and a "mosh" chase ensues.
+    The thugs exchange a look, then dive after Ace, and a "mosh" chase ensues.
 
-Ace is passed back onto the stage as the song comes to an end. The singer is lying there exhausted. Ace sees the crowd starting to put the thugs down, so he quickly grabs the microphone off the floor.
+    Ace is passed back onto the stage as the song comes to an end. The singer is lying there exhausted. Ace sees the crowd starting to put the thugs down, so he quickly grabs the microphone off the floor.
 
 ACE
 
@@ -3366,27 +3389,27 @@ ACE
 
 ONE, TWO, THREE, FOUR, SPANK ME MOMMY!!!
 
-The audience looks at Ace for a second. Then the band members exchange a look and go for it!!
+    The audience looks at Ace for a second. Then the band members exchange a look and go for it!!
 
-It's a nightmarish little ditty. Ace sings like one of Satan's minions.
+    It's a nightmarish little ditty. Ace sings like one of Satan's minions.
 
-ACE
+    ACE
 
 URGHHUURRAAAW! ARGHUURRRREEEW!
 
-The crowd seems to understand. They throw the thugs high in the air again and mosh them away from the stage. The Thugs are shooting stray bullets the whole time.
+    The crowd seems to understand. They throw the thugs high in the air again and mosh them away from the stage. The Thugs are shooting stray bullets the whole time.
 
-Ace incites the crowd, even more now, with a punching gesture. The crowd follows their new leader, punching with one hand, moshing with the other.
+    Ace incites the crowd, even more now, with a punching gesture. The crowd follows their new leader, punching with one hand, moshing with the other.
 
-The thugs get the living crap "moshed" out of them.
+    The thugs get the living crap "moshed" out of them.
 
-When the song ends, Ace raises fists in the air. The cheering crowd violently drops the thugs. They're out cold.
+    When the song ends, Ace raises fists in the air. The cheering crowd violently drops the thugs. They're out cold.
 
 EXT. TEA ROOM - NIGHT
 
 Ace's car PEELS OUT and races by the parked '81 Ford Bronco.
 
-EXT. MELISSA'S APARTMENT - NIGHT
+    EXT. MELISSA'S APARTMENT - NIGHT
 
 Ace's car skids to a halt. He hops out.
 
@@ -3398,21 +3421,21 @@ MELISSA
 
 Who is it?
 
-ACE (O.S.)
+    ACE (O.S.)
 
-Ira.
+    Ira.
 
-MELISSA
+        MELISSA
 
 Ira who?
 
-ACE (O.S.)
+    ACE (O.S.)
 
-I refuse to do a 'knock knock joke'. Come on, open up!
+    I refuse to do a 'knock knock joke'. Come on, open up!
 
-Melissa opens the door.
+    Melissa opens the door.
 
-MELISSA
+    MELISSA
 
 Ace, what are you doing? It's the middle of the night!
 
@@ -3420,7 +3443,7 @@ ACE
 
 You have to commit me.
 
-EXT. HIGHWAY - DAWN
+    EXT. HIGHWAY - DAWN
 
 Ace's clunker speeds down the highway.
 
@@ -3436,21 +3459,21 @@ EXT. SHADY ACRES - ESTABLISHING - DAY
 
 A state hospital located on acres of green, manicured lawns.
 
-INT. SHADY ACRES - DAY
+    INT. SHADY ACRES - DAY
 
 The reception area. A DOCTOR is before Melissa.
 
-DOCTOR
+    DOCTOR
 
 Mrs. Robinson? I'm Doctor Handly. Now who is it that you'd like to have us look at?
 
-MELISSA
+    MELISSA
 
-My brother… Eugene.
+    My brother… Eugene.
 
-ANGLE ON ACE - Looking like the football player who never wore a helmet.
+    ANGLE ON ACE - Looking like the football player who never wore a helmet.
 
-ACE
+    ACE
 
 I'm ready to go in, Coach. Just give me a chance. I know there's a lot riding on it, but it's all psychological. Got to stay in a positive frame of mind. Memorize the play book. Study the films.
 
@@ -3466,13 +3489,13 @@ ACE (CON'T)
 
 Super slo-mo!
 
-CUT TO:
+    CUT TO:
 
-EXT. SHADY ACRES HOSPITAL - DAY
+    EXT. SHADY ACRES HOSPITAL - DAY
 
 Melissa walks with the Doctor. Patients are sitting around, doing outdoor therapy, etc.
 
-DOCTOR
+    DOCTOR
 
 You're brother won't be the first professional football player we've treated.
 
@@ -3480,9 +3503,9 @@ MELISSA
 
 Is that right?
 
-DOCTOR
+    DOCTOR
 
-Yes. We're very sensitive to the emotional stress athletes have to endure.
+    Yes. We're very sensitive to the emotional stress athletes have to endure.
 
 Ace runs across the b.g. screaming "I'm open! I'm open!"
 
@@ -3496,23 +3519,23 @@ That's a relief, Doctor.
 
 Ace takes a "snap" from a three-foot hedge and dives over it into the end zone. Melissa and the doctor stop to watch him.
 
-DOCTOR
+    DOCTOR
 
 He seems to have some difficulty letting go of the game. Has he had a long history of mental illness?
 
-MELISSA
+    MELISSA
 
-(truthfully)
+    (truthfully)
 
-As long as I've known him.
+    As long as I've known him.
 
 Ace does a wild touchdown dance with some of the other patients participating.
 
-INT. SHADY GLADE ACRES - HALLWAY - DAY
+    INT. SHADY GLADE ACRES - HALLWAY - DAY
 
 The doctor is showing Melissa around. Ace is walking alongside them adjusting his imaginary shoulder pads.
 
-DOCTOR
+    DOCTOR
 
 This is our therapy room… Arts and crafts…
 
@@ -3528,9 +3551,9 @@ ACE
 
 HALFTIIIIME!!
 
-Ace sticks his head in the water fountain then sits down on the bench outside the storage room.
+    Ace sticks his head in the water fountain then sits down on the bench outside the storage room.
 
-MELISSA
+    MELISSA
 
 He'll be fine by himself for the next twenty minutes.
 
@@ -3540,17 +3563,17 @@ Well, why don't I show you the dormitories, then?
 
 They leave Ace.
 
-After a beat, Ace gets up and does a quick spin pattern into the storage room door.
+    After a beat, Ace gets up and does a quick spin pattern into the storage room door.
 
-INT. STORAGE ROOM - CONTINUOUS ACTION
+    INT. STORAGE ROOM - CONTINUOUS ACTION
 
 Cartons everywhere. Ace does a quick search and locates several boxes maked FINKLE.
 
-Ace looks through the first couple of boxes and finds only clothes. In the third box, he hits the jackpot: He finds sicko arts and crafts dedicated to Marino. Die-Dan potholders, shredded Isotoner gloves. He opens a little diary. "Laces Out!" is insanely scrawled on every page.
+    Ace looks through the first couple of boxes and finds only clothes. In the third box, he hits the jackpot: He finds sicko arts and crafts dedicated to Marino. Die-Dan potholders, shredded Isotoner gloves. He opens a little diary. "Laces Out!" is insanely scrawled on every page.
 
-Ace finds a newspaper clipping, the headline reads:
+    Ace finds a newspaper clipping, the headline reads:
 
-SEARCH CALLED OFF FOR MISSING HIKER
+    SEARCH CALLED OFF FOR MISSING HIKER
 
 ACE
 
@@ -3566,9 +3589,9 @@ A massive search ended today when rescue workers were unable to find the body of
 
 Lois Einhorn… holy shit balls.
 
-Ace sits bewildered.
+    Ace sits bewildered.
 
-INT. POLICE STATION - DAY
+    INT. POLICE STATION - DAY
 
 The phone rings at Emilio's desk. He answers it.
 
@@ -3576,19 +3599,19 @@ EMILIO
 
 Echavez.
 
-INT. SHADY ACRES - HALLWAY - DAY
+    INT. SHADY ACRES - HALLWAY - DAY
 
 Ace is on the phone. A CRAZY GUY is hovering nearby.
 
-ACE
+    ACE
 
 This is Chicken Little. The sky is falling.
 
-EMILIO
+    EMILIO
 
 What?
 
-BACK TO EMILIO
+    BACK TO EMILIO
 
 A beat as he listens to Ace's news.
 
@@ -3596,27 +3619,27 @@ EMILIO
 
 I don't get it. What's it mean?
 
-INTERCUT ACE/EMILIO
+    INTERCUT ACE/EMILIO
 
 ACE
 
 It means she's involved in this. The article's dated the day before Finkle disappeared.
 
-EMILIO
+    EMILIO
 
 Before who disappeared?
 
-ACE
+    ACE
 
-Finkle. Ray Finkle… the guy who took the dolphin? The guy you're supposed to be looking for?! Einhorn didn't tell you, did she?
+    Finkle. Ray Finkle… the guy who took the dolphin? The guy you're supposed to be looking for?! Einhorn didn't tell you, did she?
 
-EMILIO
+    EMILIO
 
-Hey, Ace. I see where you're goin' with this and you're goin' alone.
+    Hey, Ace. I see where you're goin' with this and you're goin' alone.
 
-A Crazy Guy stands next to Ace now and begins mimicking everything he says.
+    A Crazy Guy stands next to Ace now and begins mimicking everything he says.
 
-ACE
+    ACE
 
 Come on, E. I tell her about Finkle, she doesn't tell a soul. I have an article here that connects her with Finkle. You gotta' check her out.
 
@@ -3624,13 +3647,13 @@ Come on, E. I tell her about Finkle, she doesn't tell a soul. I have an article 
 
 Do you mind?
 
-The Crazy Guy stops and moves to one of the phones.
+    The Crazy Guy stops and moves to one of the phones.
 
-EMILIO
+    EMILIO
 
 Ace, I like my job. I get health insurance and benefits.
 
-CRAZY GUY
+    CRAZY GUY
 
 (into receiver)
 
@@ -3652,15 +3675,15 @@ Well, look who's trying to use the phone.
 
 Ace covers the phone receiver and whispers to them in a heartfelt voice.
 
-ACE
+    ACE
 
 Brian Piccalo is dead.
 
-Ace breaks down. Melissa hangs up the phone and leads him away.
+    Ace breaks down. Melissa hangs up the phone and leads him away.
 
-We hear a thrash version of the theme to "Brian's Song" as they exit the hospital.
+    We hear a thrash version of the theme to "Brian's Song" as they exit the hospital.
 
-INT. POLICE STATION - NIGHT
+    INT. POLICE STATION - NIGHT
 
 Emilio stands at a window, watching Einhorn drive off. The coast is clear so he sneaks into…
 
@@ -3668,13 +3691,13 @@ INT. EINHORN'S OFFICE - CONTINUOUS
 
 He rifles through her file cabinet. He tears through papers. Then he looks in her desk.
 
-Stuffed in the back of the drawer he finds a personal note: We can make out the signature. Roger. He pockets it and walks out.
+    Stuffed in the back of the drawer he finds a personal note: We can make out the signature. Roger. He pockets it and walks out.
 
-EXT. MELISSA'S APARTMENT - NIGHT
+    EXT. MELISSA'S APARTMENT - NIGHT
 
 Ace and Melissa pull up in the old heap.
 
-ACE
+    ACE
 
 Good job today. You're quite a dirty rotten filthy liar.
 
@@ -3692,9 +3715,9 @@ MELISSA
 
 Okay.
 
-She gets out of the car, then turns and leans in the window.
+    She gets out of the car, then turns and leans in the window.
 
-MELISSA
+    MELISSA
 
 Listen… I know there isn't much time left. The game is tomorrow. But I know you've done your best. It's just an impossible situation. I don't expect..
 
@@ -3708,7 +3731,7 @@ ACE (CONT'D)
 
 …bet on the Dolphins.
 
-INT. ACE'S APARTMENT - LATE NIGHT
+    INT. ACE'S APARTMENT - LATE NIGHT
 
 CLOSE UP: ANSWERING MACHINE
 
@@ -3722,35 +3745,35 @@ Venturaaaa? Your time is up! You're out! You hear me?! No rent… no roof!
 
 We widen to find Ace on the couch listening.
 
-MESSAGE #2
+    MESSAGE #2
 
 Ace, it's E. Got something you might find interesting. It's a note from Podacter to Einhorn, thanking her for a wonderful Saturday night. This is too weird, man?
 
-ACE
+    ACE
 
-Wiggles, rewind.
+    Wiggles, rewind.
 
-Wiggles obediently hits another button and rewinds the phone tape. Ace pops sunflower seeds, and holds some evidence aloft thinking. A bird eats seeds out of his naval.
+    Wiggles obediently hits another button and rewinds the phone tape. Ace pops sunflower seeds, and holds some evidence aloft thinking. A bird eats seeds out of his naval.
 
-ACE
+    ACE
 
 What the hell does Lois Einhorn have to do with Ray Finkle? Come on, think!
 
-DISSOLVE TO:
+    DISSOLVE TO:
 
-Later. Ace is posed like Rodin's "The Thinker".
+    Later. Ace is posed like Rodin's "The Thinker".
 
 ACE
 
 Finkle and Einhorn. In it together. How? Why?
 
-A small monkey sits in the same position. Mocking Ace.
+    A small monkey sits in the same position. Mocking Ace.
 
-DISSOLVE TO:
+    DISSOLVE TO:
 
-Later still. Ace pacing, jumping up and down. Trying to get his intuitive juices flowing. The monkey is likewise, jumping on the mantle.
+    Later still. Ace pacing, jumping up and down. Trying to get his intuitive juices flowing. The monkey is likewise, jumping on the mantle.
 
-ACE
+    ACE
 
 Alright! Here we go! Answer's right there! Just gotta get some blood to the brain! Finkle and Einhorn! Finkle and Einhorn! Finkle and Einhorn! Finkle and Einhorn!
 
@@ -3758,7 +3781,7 @@ The animals all watch him like he's crazy.
 
 DISSOLVE TO:
 
-Daybreak. Ace sits staring at a picture of Finkle on the coffee table. He's totally spent and on the verge of tears.
+    Daybreak. Ace sits staring at a picture of Finkle on the coffee table. He's totally spent and on the verge of tears.
 
 ACE
 
@@ -3766,7 +3789,7 @@ ACE
 
 Finkle and Einhorn. Einhorn and Finkle.
 
-He turns to see the monkey crashed out in a heap on a sofa pillow.
+    He turns to see the monkey crashed out in a heap on a sofa pillow.
 
 ACE
 
@@ -3774,27 +3797,27 @@ ACE
 
 Quitter.
 
-Wiggles jumps up onto the coffee table now. Ace can't be bothered with him.
+    Wiggles jumps up onto the coffee table now. Ace can't be bothered with him.
 
 ACE
 
 What do you want? Huh?
 
-Wiggles whines at the tone of Ace's voice.
+    Wiggles whines at the tone of Ace's voice.
 
 ACE (CONT'D)
 
 What? I got no food for you. You gotta have money to buy food. I gotta find the dolphin to get the money. I don't see any dolphins around here, do you? Face it, it's hopeless… your master is a LOSER.
 
-Ace buries his face in his hands. His dog Wiggles does the same. Then Ace looks up again.
+    Ace buries his face in his hands. His dog Wiggles does the same. Then Ace looks up again.
 
-ACE
+    ACE
 
 LOO… HOO…
 
 Suddenly he is silenced by something amazing.
 
-Wiggles' dark haired floppy ears are lying around Finkle's picture like a wig. Ace combs the hair over the head shot. The "make-over" is unmistakable. It's Einhorn!!
+    Wiggles' dark haired floppy ears are lying around Finkle's picture like a wig. Ace combs the hair over the head shot. The "make-over" is unmistakable. It's Einhorn!!
 
 ACE
 
@@ -3802,21 +3825,21 @@ Oh, my god! That's it!
 
 He jumps up, estatic.
 
-ACE
+    ACE
 
 Einhorn is Finkle! Finkle is Einhorn!… Einhorn is a man!!!
 
-Ace's expression quickly turns sour.
+    Ace's expression quickly turns sour.
 
 ACE
 
 OH MY GOD!!! EINHORN IS A MAN!!!
 
-MUSIC UP: AEROSMITH'S DUD LOOKS LIKE A LADY…
+    MUSIC UP: AEROSMITH'S DUD LOOKS LIKE A LADY…
 
 Ace makes a mad dash into the bathroom.
 
-INT. ACE'S BATHROOM - MORNING - QUICK CUTS
+    INT. ACE'S BATHROOM - MORNING - QUICK CUTS
 
 …Ace furiously brushes his teeth.
 
@@ -3824,17 +3847,17 @@ INT. ACE'S BATHROOM - MORNING - QUICK CUTS
 
 …Ace is in the shower. He slowly curls up into a ball under the steaming water with an expression of horror on his face.
 
-INT. EINHORN'S HOUSE - DAY
+    INT. EINHORN'S HOUSE - DAY
 
 CLOSE UP:
 
-A woman's leg being shaved.
+    A woman's leg being shaved.
 
 Woman sexily putting on nylons.
 
-Woman hands squeezing perfume bulb.
+    Woman hands squeezing perfume bulb.
 
-Woman's hand putting on AFC championship ring. One stone is missing.
+    Woman's hand putting on AFC championship ring. One stone is missing.
 
 EXT. EINHORN'S HOUSE - CONTINUOUS
 
@@ -3848,21 +3871,21 @@ You're gun is sticking into my hip. Yeeeekkkk!
 
 Einhorn comes out her front door and gets into her car. Ace shudders once more and then follows her.
 
-EXT. MIAMI STREET - DAY
+    EXT. MIAMI STREET - DAY
 
 The road is jammed in one direction. Going towards the Super Bowl. Einhorn drives in the opposite direction. Out of town. Ace tails her at a safe distance, with his head out the window, of course.
 
-INT. BOBBY RIDDLE STADIUM - DAY
+    INT. BOBBY RIDDLE STADIUM - DAY
 
 Various shots of crazy fans, piling into the stadium.
 
-INT. STADIUM OWNER'S BOX - DAY
+    INT. STADIUM OWNER'S BOX - DAY
 
 Melissa, BOBBY RIDDLE, and GUESTS all amidst the usual pre-game hobnobbing. Most of the talk centers on the loss of Marino.
 
-Emilio, in full uniform, and a couple cops are providing extra security for the box.
+    Emilio, in full uniform, and a couple cops are providing extra security for the box.
 
-EXT. HIGHWAY ONE - DAY
+    EXT. HIGHWAY ONE - DAY
 
 Einhorn drives south out of town. The area's getting remote. Ace follows.
 
@@ -3874,43 +3897,43 @@ A large, abandoned industrial facility. Einhorn parks, disappears inside…
 
 A few beats later, Ace kills the engine and exits singing the score to "Mission Impossible".
 
-INT. INDUSTRIAL PLANT - DAY
+    INT. INDUSTRIAL PLANT - DAY
 
 Immense machines and swimming pool sized cauldrons.
 
-Ace cautiously makes his way through the desolate site, singing quietly now. He stops when he hears a familiar voice.
+    Ace cautiously makes his way through the desolate site, singing quietly now. He stops when he hears a familiar voice.
 
-JOHN MADDEN (O.S.)
+    JOHN MADDEN (O.S.)
 
 I particularly like the match-ups of the defense.
 
-Ace sees a weird sight: A HUGE TV PROJECTION SCREEN tuned to the Super Bowl pre-game show. Marino is tied to a football tackling sled. The two thugs take turns running into Dan with their shoulders, driving him back five feet each time.
+    Ace sees a weird sight: A HUGE TV PROJECTION SCREEN tuned to the Super Bowl pre-game show. Marino is tied to a football tackling sled. The two thugs take turns running into Dan with their shoulders, driving him back five feet each time.
 
-JOHN MADDEN (ON TV)
+    JOHN MADDEN (ON TV)
 
 …But the real story of this game is the absence of Dan Marino. Him being kidnapped and all has got to be a strain on this Miami team. I really feel sorry for those guys! I mean, it's hard enough enduring the pressure of the Super Bowl, without your star quarterback gettin' himself kidnapped. This is the whole ball of wax, folks! You wanna' get kidnapped, you do it in the off season!…
 
 Marino looks incredulously at the screen. Next to him, Snowflake "watches" from a ground level cistern serving as an ad hoc tank.
 
-Ace sneaks closer.
+    Ace sneaks closer.
 
-INT. BOBBY RIDDLE STADIUM - DAY
+    INT. BOBBY RIDDLE STADIUM - DAY
 
 The crowd quiets as Jon Bon Jovi prepares to sing the National Anthem.
 
-Various shots of fans all standing at attention.
+    Various shots of fans all standing at attention.
 
-In the owners box, Melissa looks to Emilio. Nothing's new.
+    In the owners box, Melissa looks to Emilio. Nothing's new.
 
 INT. INDUSTRIAL PLANT - DAY
 
 Einhorn is now in front of the big screen TV SINGING the National Anthem along with Bon Jovi. The thugs, VINNIE and ROC, are behind her standing at attention.
 
-The song ends. The crowd cheers.
+    The song ends. The crowd cheers.
 
-In a sultry fashion Einhorn circles Marino now.
+    In a sultry fashion Einhorn circles Marino now.
 
-EINHORN
+    EINHORN
 
 I just love Super Bowl Sunday, don't you, Dan? A magical afternoon where dreams are made… or crushed!
 
@@ -3928,17 +3951,17 @@ I don't know… I get hit in the head a lot!
 
 On the TV the ref makes an announcement.
 
-REF It's tails. The Eagles will receive.
+    REF It's tails. The Eagles will receive.
 
 Dan really struggles now.
 
-EINHORN
+    EINHORN
 
 Oops. Looks like we're going to have to kick, Dan.
 
 Einhorn steps behind a football set up on a tee. And in perfect sync with the kicker on TV, she boots a ball through a window of the warehouse.
 
-Marino doesn't know what to think.
+    Marino doesn't know what to think.
 
 EINHORN
 
@@ -3946,7 +3969,7 @@ I made some refreshments, Dan. Would you like some refreshments, Dan? I'll be ri
 
 She goes. Dan struggles, but to no avail.
 
-MARINO
+    MARINO
 
 Look, I don't know how much psycho woman is paying you guys, but I can double it.
 
@@ -3954,27 +3977,27 @@ VINNIE
 
 Sorry, Danny boy. Psycho woman keeps us out of prison.
 
-Vinnie grabs a feeder fish and entices Snowflake to the surface. Roc raises a football.
+    Vinnie grabs a feeder fish and entices Snowflake to the surface. Roc raises a football.
 
-ROC Hey, Marino, check it out. I'm throwin' passes to a Dolphin!
+    ROC Hey, Marino, check it out. I'm throwin' passes to a Dolphin!
 
-He chucks the ball and hits Snowflake, hard. The thugs both laugh hysterically.
+    He chucks the ball and hits Snowflake, hard. The thugs both laugh hysterically.
 
-Snowflake makes an angry leap and drenches the thugs. Snowflake laughs now, the thugs are furious.
+    Snowflake makes an angry leap and drenches the thugs. Snowflake laughs now, the thugs are furious.
 
-VINNIE
+    VINNIE
 
 Get some more fish!
 
-INT. BEHIND MACHINERY - CONTINUOUS
+    INT. BEHIND MACHINERY - CONTINUOUS
 
 Roc walks behind a big piece of machinery, reaches down for the pail of smelts, but sees nothing.
 
-ROC Where the hell's the smelts?
+    ROC Where the hell's the smelts?
 
 He stands up straight and we all hear that familiar "Pop" of a sunflower seed being cracked open.
 
-Roc's eyes widen. He turns and sees…
+    Roc's eyes widen. He turns and sees…
 
 Ace coyly smiles at him, blows the sunflower seed shells into his face and CLANG! He whacks Roc in the head with a pail full of fish.
 
@@ -3984,37 +4007,37 @@ ACE
 
 He sleeps with the fishes.
 
-INT. INDUSTRIAL PLANT - CONTINUOUS
+    INT. INDUSTRIAL PLANT - CONTINUOUS
 
 VINNIE
 
 Hey Roc, what the hell was that?
 
-Vinnie cocks his gun and goes to check out the sound.
+    Vinnie cocks his gun and goes to check out the sound.
 
-INT. BEHIND MACHINERY - CONTINUOUS
+    INT. BEHIND MACHINERY - CONTINUOUS
 
 Vinnie rounds the corner and sees nothing. He walks a little further and notices a trail of smelts lined up on the ground.
 
-He follows the trail around a corner and we see Roc, unconscious but moaning. He is sitting against the ground, with his legs spread apart and the pail over his head. The trail of smelts leads to his crotch. There is one halfway into his zipper, with its tail flipping.
+    He follows the trail around a corner and we see Roc, unconscious but moaning. He is sitting against the ground, with his legs spread apart and the pail over his head. The trail of smelts leads to his crotch. There is one halfway into his zipper, with its tail flipping.
 
-Vinnie takes in this sight, then rushes over to Roc and stands him up.
+    Vinnie takes in this sight, then rushes over to Roc and stands him up.
 
-VINNIE
+    VINNIE
 
 Hey man! What happened? What's goin on…?
 
 We see Ace at the top of a giant machine. He is aiming a 200 pound steel hook, that hangs on a chain from the ceiling.
 
-ACE
+    ACE
 
 Guess what, boys, it's nap time.
 
 Ace gently releases the hook. Just as Vinnie and Roc turn to look, the iron hook shears both of their heads clean off.
 
-Two headless bodies fall to the ground in slow motion with blood gushing from their necks.
+    Two headless bodies fall to the ground in slow motion with blood gushing from their necks.
 
-CLOSE ON ACE - HORRIFIED
+    CLOSE ON ACE - HORRIFIED
 
 ACE
 
@@ -4028,17 +4051,17 @@ ACE
 
 Lord, I swear! I just wanted to knock them out!
 
-Ace abruptly stops to think.
+    Ace abruptly stops to think.
 
-ACE
+    ACE
 
 Is that murder? I don't know. They were gonna kill me. But they didn't… But they tried. That's self defense. That's it!! I have nothing to worry about!!
 
-CUT TO:
+    CUT TO:
 
-Ace nervously whistling as he wipes his fingerprints off the hook.
+    Ace nervously whistling as he wipes his fingerprints off the hook.
 
-INT. IRONWORKS FACTORY - FACTORY
+    INT. IRONWORKS FACTORY - FACTORY
 
 Ace checks on Snowflake then goes to Marino. He signals for Dan to keep quiet, then starts to untie him.
 
@@ -4048,39 +4071,39 @@ MARINO
 
 Who are you?
 
-ACE
+    ACE
 
-(whispers)
+    (whispers)
 
-Ace Ventura. Pet detective. I've been sent in with a special play.
+    Ace Ventura. Pet detective. I've been sent in with a special play.
 
 (whispers)
 
 Quarterback sneak.
 
-WE HEAR THE CLICK OF A GUN.
+    WE HEAR THE CLICK OF A GUN.
 
 EINHORN (O.S.)
 
 Penalty. Too many men on the field.
 
-Ace turns. Einhorn's holding a gun on them from the other side of Snowflake's tank.
+    Ace turns. Einhorn's holding a gun on them from the other side of Snowflake's tank.
 
 EINHORN (CON'T)
 
 I warned you, Ventura.
 
-ACE
+    ACE
 
 What happened to "Ace"?
 
-EINHORN
+    EINHORN
 
-Good question.
+    Good question.
 
-She pulls out a cellular phone and dials.
+    She pulls out a cellular phone and dials.
 
-ACE
+    ACE
 
 Be careful with that phone, lieutenant. I wouldn't want you to get a tumor.
 
@@ -4090,15 +4113,15 @@ EINHORN
 
 Sergeant Aguado, it's Lt. Einhorn. Get some men over to the old ironworks factory on Victoria Road. I've got the kidnapper trapped in the warehouse. It's Ace Ventura. He's killed Marino and Snowflake.
 
-Einhorn smiles as she puts the phone away.
+    Einhorn smiles as she puts the phone away.
 
-EINHORN
+    EINHORN
 
 Vinnie! Roc! Get in here!
 
-Ace gets a very guilty look.
+    Ace gets a very guilty look.
 
-ACE
+    ACE
 
 What? Who are they? You mean there's other people here?
 
@@ -4124,31 +4147,31 @@ RADIO DISPATCHER
 
 Emilio nudges Melissa.
 
-EMILIO
+    EMILIO
 
 It's Ace. Let's go.
 
-INT. HALLWAY - CONTINUOUS
+    INT. HALLWAY - CONTINUOUS
 
 Emilio high tails it out of there. Dodging concession stand patrons, bathroom lines, etc… Melissa runs behind, trying to catch up.
 
-MELISSA
+    MELISSA
 
 Emilio, is he in trouble?
 
-EMILIO
+    EMILIO
 
-Don't worry, there's nothing Ace can't handle!
+    Don't worry, there's nothing Ace can't handle!
 
 INT. IRONWORKS FACTORY - DAY
 
 Einhorn cocks her gun. Ace's face is glistening with tears. He's a complete wreck.
 
-ACE
+    ACE
 
 Don't kill meeee!! Pleeheeheeheeheeeezzz!!! I'll never tell anyone! I swear!
 
-(indicating Marino)
+    (indicating Marino)
 
 He's the one you want!! Kill him!!
 
@@ -4158,9 +4181,9 @@ MARINO
 
 No… kill him!
 
-The two argue. Einhorn fires a shot in the air to stop them.
+    The two argue. Einhorn fires a shot in the air to stop them.
 
-EINHORN
+    EINHORN
 
 No, I'm gonna kill the dolphin first.
 
@@ -4170,31 +4193,31 @@ I wouldn't want you to miss that.
 
 Einhorn walks to the edge of the tank. She aims the gun at Snowflake and FIRES!
 
-We see the bullet miss Snowflake under water.
+    We see the bullet miss Snowflake under water.
 
-Snowflake swims wildly. She FIRES again! Misses again. Suddenly, Ace HOLLERS!
+    Snowflake swims wildly. She FIRES again! Misses again. Suddenly, Ace HOLLERS!
 
-ACE
+    ACE
 
 Blue forty-two!!
 
-Einhorn turns to Ace.
+    Einhorn turns to Ace.
 
-EINHORN
+    EINHORN
 
 SHUT UP!!
 
-ACE
+    ACE
 
 BLUE FORTY-TWO!
 
-Einhorn shoots at Ace! He dives out of the way.
+    Einhorn shoots at Ace! He dives out of the way.
 
-ACE
+    ACE
 
 HUT! HUT!
 
-Suddenly, Snowflake leaps out of the water and takes the gun out of Einhorn's hand, like the trick we saw earlier. Snowflake swims around the pool with the gun in his mouth.
+    Suddenly, Snowflake leaps out of the water and takes the gun out of Einhorn's hand, like the trick we saw earlier. Snowflake swims around the pool with the gun in his mouth.
 
 ACE
 
@@ -4206,11 +4229,11 @@ Yes. The highly trained dolphin. Perhaps the smartest mammal in the animal kingd
 
 Snowflake. Come here, Snowflake! Bring me the gun!
 
-(makes dolphin sounds)
+    (makes dolphin sounds)
 
 EEEEEE! EEEEEE! EEEEEE!
 
-Just like the trick in his routine, however, Snowflake swims around the tank, passes Ace, then hands the gun back to Einhorn. He finishes with a tail walk.
+    Just like the trick in his routine, however, Snowflake swims around the tank, passes Ace, then hands the gun back to Einhorn. He finishes with a tail walk.
 
 ACE
 
@@ -4218,15 +4241,15 @@ ACE
 
 Stupid fish.
 
-ON TV: Miami's kicker boots a perfect field goal from fifty yards.
+    ON TV: Miami's kicker boots a perfect field goal from fifty yards.
 
 JOHN MADDEN
 
 He got all of his leg into that one!
 
-The field goal kicker is hugged by his teammates.
+    The field goal kicker is hugged by his teammates.
 
-ACE
+    ACE
 
 Good to see someone who doesn't buckle under the pressure?
 
@@ -4236,13 +4259,13 @@ Yeah, not like in 82 when we choked…
 
 Einhorn walks to Ace and puts the gun against his head.
 
-EINHORN
+    EINHORN
 
 What would you know about pressure?
 
-ACE
+    ACE
 
-Well, I've kissed a man.
+    Well, I've kissed a man.
 
 JOHN MADDEN (ON TV)
 
@@ -4250,7 +4273,7 @@ Of course, there's never been a more crucial kick than the famous Kick heard 'ro
 
 The famous footage airs on TV. They all turn to watch.
 
-JOHN MADDEN
+    JOHN MADDEN
 
 …I mean, it's clear to me that it was a good hold. Finkle just booted it.
 
@@ -4258,31 +4281,31 @@ EINHORN
 
 The laces weren't out. THE LACES WEREN'T OUT!!
 
-Einhorn takes a shot at the screen, creating a hole in Madden's forehead. Ace uses the moment to smack the gun out of her hand.
+    Einhorn takes a shot at the screen, creating a hole in Madden's forehead. Ace uses the moment to smack the gun out of her hand.
 
 A HUGE, NO-HOLDS-BARRED FIGHT ensues. Ace and Einhorn punch each other about the face and stomach.
 
-Einhorn throws a punch at Ace. Ace goes down.
+    Einhorn throws a punch at Ace. Ace goes down.
 
-Einhorn goes for the loose gun. Ace leaps and tackles her.
+    Einhorn goes for the loose gun. Ace leaps and tackles her.
 
-They both crash into old rusty equipment, raising a mountain of dust. Marino struggles all the while trying to get free.
+    They both crash into old rusty equipment, raising a mountain of dust. Marino struggles all the while trying to get free.
 
-Einhorn kicks Ace. He flies into Marino.
+    Einhorn kicks Ace. He flies into Marino.
 
-MARINO
+    MARINO
 
 Having a little trouble with the lady, Ace?
 
-ACE
+    ACE
 
-(out of breath)
+    (out of breath)
 
 You don't understand, she's a –
 
 Einhorn grabs Ace, throws him into a head lock and begins wailing on his face.
 
-Meanwhile, cops start arriving, SWAT team members disperse onto the catwalk as the fight continues. They try but can't get a bead on Ace as the two roll around on the floor.
+    Meanwhile, cops start arriving, SWAT team members disperse onto the catwalk as the fight continues. They try but can't get a bead on Ace as the two roll around on the floor.
 
 More punches. They fight up a flight of stairs, then back down. To the amazement of the SWAT team, Ace and Einhorn slug it out as equals.
 
@@ -4292,7 +4315,7 @@ AGUADO
 
 Get him, Lois!
 
-Now they crash through a plate glass window together. Ace gets to his knees first and wobbles toward the gun. It's the first clear shot the SWAT team has had.
+    Now they crash through a plate glass window together. Ace gets to his knees first and wobbles toward the gun. It's the first clear shot the SWAT team has had.
 
 EINHORN
 
@@ -4300,11 +4323,11 @@ EINHORN
 
 Shoot him! Shoot him!
 
-We all hear the guns cocked. We see Ace in the rifle sights. We see fingers twitch on triggers.
+    We all hear the guns cocked. We see Ace in the rifle sights. We see fingers twitch on triggers.
 
-A loud voice comes from off camera.
+    A loud voice comes from off camera.
 
-EMILIO
+    EMILIO
 
 DON'T SHOOT! HOLD YOUR FIRE!
 
@@ -4314,13 +4337,13 @@ MELISSA
 
 Put down your guns or this cop gets it!
 
-The SWAT team hesitates.
+    The SWAT team hesitates.
 
 MELISSA (CONT'D)
 
 I mean it!!
 
-Much to Emilio's surprise, she cocks the gun.
+    Much to Emilio's surprise, she cocks the gun.
 
 EMILIO
 
@@ -4334,11 +4357,11 @@ She's not joking!
 
 The SWAT team leader signals his men. They lower their guns. Einhorn gets back to her feet.
 
-EINHORN
+    EINHORN
 
 He kidnapped Snowflake. He killed Roger Podacter, and he was about to kill Dan Marino and me!
 
-ACE
+    ACE
 
 Ho, ho! Fiction can be fun! But I find the reference section much more enlightening.
 
@@ -4352,13 +4375,13 @@ What you wouldn't read about is how Ray Finkle lost his mind, and was committed 
 
 Ace gasps for air. Everyone is totally confused.
 
-AGUADO
+    AGUADO
 
 What the hell are you trying to say?
 
-ACE
+    ACE
 
-She's not Lois Einhorn! She's Ray Finkle! She's a man!
+    She's not Lois Einhorn! She's Ray Finkle! She's a man!
 
 EINHORN
 
@@ -4366,11 +4389,11 @@ He's lying! Shoot him!
 
 Ace walks over to her.
 
-ACE
+    ACE
 
 Let's just see who's lying. Would a real woman have to wear one of these?
 
-Ace dramatically pulls at Einhorn's hair, thinking it's a wig. Einhorn's head flies back. The hair is real. Ace keeps tugging it.
+    Ace dramatically pulls at Einhorn's hair, thinking it's a wig. Einhorn's head flies back. The hair is real. Ace keeps tugging it.
 
 The SWAT team ready themselves.
 
@@ -4382,19 +4405,19 @@ Ace rips open Einhorn's blouse, and reveals two beautiful feminine breasts.
 
 The sharp shooters are tensing. Ace is laughing nervously now.
 
-ACE
+    ACE
 
 Ha, ha, ha! That kind of surgery can be done over the weekend! But I doubt if she could find the time during her busy schedule to get rid of Mr. Knish!!
 
-Ace rips off Einhorn's skirt. Einhorn now stands there fully nude. She appears to be the perfect figure of a woman.
+    Ace rips off Einhorn's skirt. Einhorn now stands there fully nude. She appears to be the perfect figure of a woman.
 
 ACE
 
 Oooh boy.
 
-Ace looks at Melissa and Emilio and shrugs his shoulders. Then, just when it seems all is lost, Dan Marino who is back behind Einhorn, motions for Ace to come over.
+    Ace looks at Melissa and Emilio and shrugs his shoulders. Then, just when it seems all is lost, Dan Marino who is back behind Einhorn, motions for Ace to come over.
 
-MARINO
+    MARINO
 
 Psst… Ace. Come here.
 
@@ -4404,25 +4427,25 @@ ACE
 
 Could you excuse me just a second.
 
-Ace goes to Dan. Melissa still holds Emilio hostage.
+    Ace goes to Dan. Melissa still holds Emilio hostage.
 
-EINHORN
+    EINHORN
 
 Shoot him. Shoot him, now!!
 
-MELISSA
+    MELISSA
 
-(to cops)
+    (to cops)
 
 Don't anybody make a move!
 
 Marino whispers something in his ear. Ace looks confident again. He once more addresses the crowd.
 
-ACE
+    ACE
 
 Ladies and gentlemen, my esteemed colleague Mr. Marino, has just brought some new evidence to my attention. Now, history has certainly shown that even the most intuitive criminal minds can be wrong, from time to time. But, if I have been mistaken… if the lieutenant is indeed a woman… then my friends, she is suffering from the worst case of hemorrhoids I have ever seen!!!
 
-Ace spins Einhorn around now, exposing to the world, the healthy set of male genetalia that Finkle has learned to keep tucked between his legs. (And if we have any balls, we'll actually show it.)
+    Ace spins Einhorn around now, exposing to the world, the healthy set of male genetalia that Finkle has learned to keep tucked between his legs. (And if we have any balls, we'll actually show it.)
 
 Everyone gasps. CLOSE UP ON EINHORN/FINKLE. He finally drops the facade.
 
@@ -4436,23 +4459,23 @@ It was Marino's fault. The laces were in.
 
 They were IN!!!
 
-Quick cuts of all the cops spitting with disgust. Then Emilio spits.
+    Quick cuts of all the cops spitting with disgust. Then Emilio spits.
 
-Then CLOSE ON Marino spitting. They all have kissed her/him/it. Even Snowflake blows his spout.
+    Then CLOSE ON Marino spitting. They all have kissed her/him/it. Even Snowflake blows his spout.
 
-Ace confidently cracks a sunflower seed.
+    Ace confidently cracks a sunflower seed.
 
-ACE
+    ACE
 
 Somebody read it its rights.
 
-Suddenly, Finkle picks up a shard of broken glass and lunges at Ace.
+    Suddenly, Finkle picks up a shard of broken glass and lunges at Ace.
 
-FINKLE
+    FINKLE
 
 DIE ANIMAL BOYYYYY!!!
 
-Thinking fast Ace sidesteps Finkle and sends him head first into Snowflake's makeshift tank. After a few seconds Finkle fights his way to the surface and thrashes around, helplessly.
+    Thinking fast Ace sidesteps Finkle and sends him head first into Snowflake's makeshift tank. After a few seconds Finkle fights his way to the surface and thrashes around, helplessly.
 
 FINKLE
 
@@ -4462,29 +4485,29 @@ Help I can't swim!!!
 
 Finkle goes under again. We see him under water sinking down.
 
-Snowflake swims to him now, allowing him to grab onto his fin and pulls Finkle gently to the side of the pool. Finkle lies there exhausted.
+    Snowflake swims to him now, allowing him to grab onto his fin and pulls Finkle gently to the side of the pool. Finkle lies there exhausted.
 
-Ace reaches down into frame, removing the '82 AFC Championship ring from Finkle's finger. We see that it's the ring with the missing stone. Ace replaces it with the stone in his pocket. It's a perfect fit.
+    Ace reaches down into frame, removing the '82 AFC Championship ring from Finkle's finger. We see that it's the ring with the missing stone. Ace replaces it with the stone in his pocket. It's a perfect fit.
 
-ACE
+    ACE
 
 LLLOOOSER! LLOO HOO SERR HERR HERR!!!
 
-Melissa is still holding the gun on Emilio.
+    Melissa is still holding the gun on Emilio.
 
-EMILIO
+    EMILIO
 
 Melissa… you can give me back my gun now.
 
-Melissa has forgotten she even had the gun. She hands it to Emilio and faints in his arms.
+    Melissa has forgotten she even had the gun. She hands it to Emilio and faints in his arms.
 
-Now Aguado appears beside Ace.
+    Now Aguado appears beside Ace.
 
-AGUADO
+    AGUADO
 
 I don't know how you did it, Ventura… but that was damn good police work. Alright guys, let's wrap this up!
 
-EXT. HIGHWAY - DAY
+    EXT. HIGHWAY - DAY
 
 Twenty or more police cars in single file provide more than ample escort for…
 
@@ -4498,21 +4521,21 @@ MARINO (O.S.)
 
 hey Ace?
 
-ACE (O.S.)
+    ACE (O.S.)
 
-Yeah, Dan?
+    Yeah, Dan?
 
-MARINO (O.S.)
+    MARINO (O.S.)
 
-Got any more gum?
+    Got any more gum?
 
-CUT TO:
+    CUT TO:
 
 INT. STADIUM - DAY
 
 The Super Bowl Halftime Show is in progress. Marino is in uniform warming up. Emilio is drooling at the cheerleaders. Ace and Melissa are standing near the fifty yard line taking in the awesome spectacle.
 
-Some fireworks go off around the tank. A marching band plays a triumphant tune. We see a helicopter come up over the side of the stadium carrying Snowflake.
+    Some fireworks go off around the tank. A marching band plays a triumphant tune. We see a helicopter come up over the side of the stadium carrying Snowflake.
 
 ANNOUNCER (O.S.)
 
@@ -4526,45 +4549,45 @@ ANNOUNCER (O.S.)
 
 Snowflake!!
 
-As the crowd roars, Melissa turns to Ace, and with Snowflake in the background performing spectacular flips, they kiss.
+    As the crowd roars, Melissa turns to Ace, and with Snowflake in the background performing spectacular flips, they kiss.
 
-ANOTHER ANGLE
+    ANOTHER ANGLE
 
 As Melissa and Ace kiss, the prized 'White Pigeon' lands on a Gatorade dispenser in the foreground. Ace spots it and starts to make a move.
 
-Just as he closes in for the grab, the Philadelphia Eagles mascot eagle walks up to get a drink and shoos the pigeon away. Ace is furious.
+    Just as he closes in for the grab, the Philadelphia Eagles mascot eagle walks up to get a drink and shoos the pigeon away. Ace is furious.
 
-ACE
+    ACE
 
 You idiot! Do you know what you've done?!
 
 The giant eagle head looks up at Ace.
 
-MASCOT
+    MASCOT
 
 Huh?
 
-Ace grabs him.
+    Ace grabs him.
 
-ACE
+    ACE
 
 You just cost me ten thousand bucks, Polly!
 
-MASCOT
+    MASCOT
 
 Yeah Blow me.
 
-ACE
+    ACE
 
 REE HEE HEE HEELYYY?!!!
 
-PULL BACK to find Eagle's mascot and Ace arguing. We can't hear what's said, but there's a lot of finger pointing.
+    PULL BACK to find Eagle's mascot and Ace arguing. We can't hear what's said, but there's a lot of finger pointing.
 
-Emilio stops his leering to check out what's going on.
+    Emilio stops his leering to check out what's going on.
 
 The ANNOUNCER up in the booth reads a release.
 
-ANNOUNCER
+    ANNOUNCER
 
 The National Football League would now like to offer a special thank you to the man who rescued Dan Marino and our beloved Snowflake…
 
@@ -4574,12 +4597,15 @@ ANNOUNCER (CONT'D)
 
 A great humanitarian, and lover of all animals… Mr. Ace Ventura!
 
-Ace is straddling the eagle, pounding the shit out of giant head.
+    Ace is straddling the eagle, pounding the shit out of giant head.
 
-The image is flashed on the big stadium screen. We freeze frame on this huge picture of Ace, as he looks into camera with his fist raised.
+    The image is flashed on the big stadium screen. We freeze frame on this huge picture of Ace, as he looks into camera with his fist raised.
 
-MUSIC UP: THRASH METAL
+    MUSIC UP: THRASH METAL
 
 ROLL CREDITS
 
-THE END
+THE END`
+
+sendScript(content)
+    .then(e => console.log(`Guión enviado ✅, ${e} mensajes enviados 🤓`)).catch(console.error)
