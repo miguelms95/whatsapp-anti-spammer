@@ -1,4 +1,4 @@
-# whatsapp-anti-spammer
+# Whatsapp anti spammer 🤡
 Trolea enviando guiones completos de cine a quienes te pretendan molestar, spammear o robar por WhatsApp con malas intenciones.
 
 ## Instrucciones
@@ -15,4 +15,8 @@ Let magic happen! Probablemente te bloquee el usuario antes de volver a pensar e
 
 ## Script sources
 
-https://guionesdecine.com/es/guion/ace-ventura-un-detective-diferente
+https://guionesdecine.com/
+
+### 🎥 Video
+
+Si quieres ver el script funcionando, aquí un video: https://twitter.com/miguelms_es/status/1758840158898598067
